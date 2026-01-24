@@ -192,5 +192,32 @@
         "Cultural": "Cultural",
         "Relaxation": "Relaxation",
         "Culinary": "Culinary"
+    },
+    "Admin": {
+        "dashboard": "Dashboard",
+        "destinations": "Destinations",
+        "activities": "Activities",
+        "bookings": "Bookings",
+        "settings": "Settings",
+        "adminMenu": "Admin Menu",
+        "adminDashboard": "Admin Dashboard",
+        "welcomeAdmin": "Welcome back, {name}",
+        "exportReports": "Export Reports",
+        "totalRevenue": "Total Revenue",
+        "totalBookings": "Total Bookings",
+        "activeUsers": "Active Users",
+        "conversionRate": "Conversion Rate",
+        "recentBookings": "Recent Bookings",
+        "last30Days": "Last 30 Days",
+        "bookingRef": "Booking Ref",
+        "activity": "Activity",
+        "status": "Status",
+        "amount": "Amount",
+        "date": "Date",
+        "participants": "{count} participants",
+        "viewAllBookings": "View All Bookings",
+        "addActivity": "Add Activity",
+        "actions": "Actions",
+        "noActivitiesFound": "No activities found. Start by creating your first experience!"
     }
 }

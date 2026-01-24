@@ -192,5 +192,32 @@
         "Cultural": "Culturel",
         "Relaxation": "Détente",
         "Culinary": "Culinaire"
+    },
+    "Admin": {
+        "dashboard": "Tableau de bord",
+        "destinations": "Destinations",
+        "activities": "Activités",
+        "bookings": "Réservations",
+        "settings": "Paramètres",
+        "adminMenu": "Menu Admin",
+        "adminDashboard": "Tableau de bord Admin",
+        "welcomeAdmin": "Bon retour, {name}",
+        "exportReports": "Exporter les rapports",
+        "totalRevenue": "Revenu total",
+        "totalBookings": "Total des réservations",
+        "activeUsers": "Utilisateurs actifs",
+        "conversionRate": "Taux de conversion",
+        "recentBookings": "Réservations récentes",
+        "last30Days": "30 derniers jours",
+        "bookingRef": "Réf. Réservation",
+        "activity": "Activité",
+        "status": "Statut",
+        "amount": "Montant",
+        "date": "Date",
+        "participants": "{count} participants",
+        "viewAllBookings": "Voir toutes les réservations",
+        "addActivity": "Ajouter une activité",
+        "actions": "Actions",
+        "noActivitiesFound": "Aucune activité trouvée. Commencez par créer votre première expérience !"
     }
 }

@@ -192,5 +192,32 @@
         "Cultural": "ثقافي",
         "Relaxation": "استرخاء",
         "Culinary": "طهي"
+    },
+    "Admin": {
+        "dashboard": "لوحة القيادة",
+        "destinations": "الوجهات",
+        "activities": "الأنشطة",
+        "bookings": "الحجوزات",
+        "settings": "الإعدادات",
+        "adminMenu": "قائمة الإدارة",
+        "adminDashboard": "لوحة إدارة المسؤول",
+        "welcomeAdmin": "مرحباً بك مجدداً، {name}",
+        "exportReports": "تصدير التقارير",
+        "totalRevenue": "إجمالي الإيرادات",
+        "totalBookings": "إجمالي الحجوزات",
+        "activeUsers": "المستخدمون النشطون",
+        "conversionRate": "معدل التحويل",
+        "recentBookings": "الحجوزات الأخيرة",
+        "last30Days": "آخر 30 يومًا",
+        "bookingRef": "مرجع الحجز",
+        "activity": "النشاط",
+        "status": "الحالة",
+        "amount": "المبلغ",
+        "date": "التاريخ",
+        "participants": "{count} مشاركين",
+        "viewAllBookings": "عرض جميع الحجوزات",
+        "addActivity": "إضافة نشاط",
+        "actions": "الإجراءات",
+        "noActivitiesFound": "لم يتم العثور على أنشطة. ابدأ بإنشاء تجربتك الأولى!"
     }
 }

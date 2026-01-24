@@ -192,5 +192,32 @@
         "Cultural": "Kultura",
         "Relaxation": "Relaks",
         "Culinary": "Kulinaria"
+    },
+    "Admin": {
+        "dashboard": "Panel główny",
+        "destinations": "Kierunki",
+        "activities": "Atrakcje",
+        "bookings": "Rezerwacje",
+        "settings": "Ustawienia",
+        "adminMenu": "Menu administratora",
+        "adminDashboard": "Panel administratora",
+        "welcomeAdmin": "Witaj ponownie, {name}",
+        "exportReports": "Eksportuj raporty",
+        "totalRevenue": "Całkowity przychód",
+        "totalBookings": "Suma rezerwacji",
+        "activeUsers": "Aktywni użytkownicy",
+        "conversionRate": "Współczynnik konwersji",
+        "recentBookings": "Ostatnie rezerwacje",
+        "last30Days": "Ostatnie 30 dni",
+        "bookingRef": "Nr rezerwacji",
+        "activity": "Atrakcja",
+        "status": "Status",
+        "amount": "Kwota",
+        "date": "Data",
+        "participants": "Uczestnicy: {count}",
+        "viewAllBookings": "Pokaż wszystkie rezerwacje",
+        "addActivity": "Dodaj atrakcję",
+        "actions": "Akcje",
+        "noActivitiesFound": "Nie znaleziono żadnych atrakcji. Zacznij od stworzenia pierwszej!"
     }
 }

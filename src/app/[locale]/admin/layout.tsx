@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import { LayoutDashboard, Map, Bike, CalendarCheck, Settings } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 export default async function AdminLayout({
     children,
@@ -10,17 +11,18 @@ export default async function AdminLayout({
     children: React.ReactNode;
 }) {
     const session = await getServerSession(authOptions);
+    const t = await getTranslations('Admin');
 
     if (!session || session.user?.role !== "ADMIN") {
         redirect("/login");
     }
 
     const navItems = [
-        { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-        { name: "Destinations", href: "/admin/destinations", icon: Map },
-        { name: "Activities", href: "/admin/activities", icon: Bike },
-        { name: "Bookings", href: "/admin/bookings", icon: CalendarCheck },
-        { name: "Settings", href: "/admin/settings", icon: Settings },
+        { name: t('dashboard'), href: "/admin/dashboard", icon: LayoutDashboard },
+        { name: t('destinations'), href: "/admin/destinations", icon: Map },
+        { name: t('activities'), href: "/admin/activities", icon: Bike },
+        { name: t('bookings'), href: "/admin/bookings", icon: CalendarCheck },
+        { name: t('settings'), href: "/admin/settings", icon: Settings },
     ];
 
     return (
@@ -28,7 +30,7 @@ export default async function AdminLayout({
             {/* Sidebar - Hidden on mobile, simple implementation */}
             <aside className="hidden lg:block w-64 bg-white border-r border-slate-100 fixed h-[calc(100vh-96px)] overflow-y-auto">
                 <div className="p-6">
-                    <h2 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Admin Menu</h2>
+                    <h2 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">{t('adminMenu')}</h2>
                     <nav className="space-y-2">
                         {navItems.map((item) => (
                             <Link
