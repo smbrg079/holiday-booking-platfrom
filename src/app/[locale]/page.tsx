@@ -1,7 +1,7 @@
 import Hero from "@/components/home/Hero";
 import TopDestinations from "@/components/home/TopDestinations";
 import FeaturedActivities from "@/components/home/FeaturedActivities";
-import { Plane, ShieldCheck, Headphones } from "lucide-react";
+import { Plane, ShieldCheck, Headphones, MapPin } from "lucide-react";
 import Newsletter from "@/components/home/Newsletter";
 import prisma from "@/lib/prisma";
 import { getTranslations } from "next-intl/server";
