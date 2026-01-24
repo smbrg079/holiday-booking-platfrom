@@ -1,0 +1,60 @@
+{
+    "Navbar": {
+        "destinations": "Ziele",
+        "activities": "Aktivitäten",
+        "about": "Über uns",
+        "contact": "Kontakt",
+        "account": "Konto",
+        "signIn": "Anmelden",
+        "signOut": "Abmelden",
+        "myBookings": "Meine Buchungen",
+        "adminConsole": "Admin-Konsole"
+    },
+    "Hero": {
+        "badge": "Einzigartige Erlebnisse entdecken",
+        "titleMain": "Erleben Sie die Welt",
+        "titleAccent": "wie nie zuvor",
+        "subtitle": "Entdecken Sie einzigartige Aktivitäten, Touren und versteckte Schätze, die für Ihr nächstes Abenteuer ausgewählt wurden.",
+        "cta": "Aktivitäten erkunden",
+        "secondaryCta": "So funktioniert es",
+        "location": "Standort",
+        "where": "Wohin?",
+        "type": "Typ",
+        "all": "Alle",
+        "date": "Datum",
+        "search": "Suchen"
+    },
+    "Homepage": {
+        "trendingTitle": "Beliebteste Aktivitäten",
+        "trendingSubtitle": "Von unseren Reiseexperten handverlesene Erlebnisse, die garantiert lebenslange Erinnerungen schaffen.",
+        "viewAll": "Alle Aktivitäten anzeigen",
+        "destinationsTitle": "Beliebte Reiseziele",
+        "destinationsSubtitle": "Entdecken Sie die begehrtesten Orte der Welt, jeder mit seiner eigenen einzigartigen Geschichte.",
+        "featuresTitle": "Warum wir",
+        "feature1Title": "Globale Reiseziele",
+        "feature1Subtitle": "Erkunden Sie über 500 Reiseziele weltweit mit verifizierten lokalen Guides.",
+        "feature2Title": "Sichere Buchung",
+        "feature2Subtitle": "Ihre Daten und Zahlungen sind durch branchenübliche Sicherheitsstandards geschützt.",
+        "feature3Title": "Support rund um die Uhr",
+        "feature3Subtitle": "Unser engagiertes Support-Team ist jederzeit für Sie da, um Fragen oder Probleme zu klären.",
+        "newsletterTitle": "Wöchentliche Reiseschätze",
+        "newsletterSubtitle": "Schließen Sie sich über 25.000 Reisenden an und erhalten Sie unsere Auswahl an versteckten Orten."
+    },
+    "Common": {
+        "price": "Preis",
+        "from": "Ab",
+        "bookNow": "Jetzt buchen",
+        "new": "Neu",
+        "reviews": "Bewertungen",
+        "duration": "Dauer"
+    },
+    "Footer": {
+        "description": "Verbindet Reisende mit einzigartigen und unvergesslichen Erlebnissen weltweit. Entdecken Sie mit uns lokale Geheimnisse.",
+        "quickLinks": "Quick Links",
+        "categories": "Kategorien",
+        "newsletter": "Newsletter",
+        "newsletterSubtitle": "Abonnieren Sie den Newsletter, um die neuesten Reise-News und exklusive Angebote zu erhalten.",
+        "subscribe": "Jetzt abonnieren",
+        "copyright": "© 2024 HolidaySync. Alle Rechte vorbehalten."
+    }
+}

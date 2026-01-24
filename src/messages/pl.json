@@ -1,0 +1,60 @@
+{
+    "Navbar": {
+        "destinations": "Kierunki",
+        "activities": "Atrakcje",
+        "about": "O nas",
+        "contact": "Kontakt",
+        "account": "Konto",
+        "signIn": "Zaloguj się",
+        "signOut": "Wyloguj się",
+        "myBookings": "Moje rezerwacje",
+        "adminConsole": "Konsola administratora"
+    },
+    "Hero": {
+        "badge": "Odkryj Wyjątkowe Doświadczenia",
+        "titleMain": "Poznaj świat",
+        "titleAccent": "jak nigdy dotąd",
+        "subtitle": "Odkryj wyjątkowe atrakcje, wycieczki i ukryte perełki wybrane specjalnie na Twoją następną przygodę.",
+        "cta": "Odkryj atrakcje",
+        "secondaryCta": "Jak to działa",
+        "location": "Miejsce",
+        "where": "Gdzie?",
+        "type": "Typ",
+        "all": "Wszystko",
+        "date": "Data",
+        "search": "Szukaj"
+    },
+    "Homepage": {
+        "trendingTitle": "Najpopularniejsze atrakcje",
+        "trendingSubtitle": "Doświadczenia starannie wybrane przez naszych ekspertów, gwarantujące wspomnienia na całe życie.",
+        "viewAll": "Zobacz wszystkie atrakcje",
+        "destinationsTitle": "Popularne kierunki",
+        "destinationsSubtitle": "Odkryj najpopularniejsze miejsca na świecie, z których każde ma swoją wyjątkową historię.",
+        "featuresTitle": "Dlaczego my",
+        "feature1Title": "Globalne kierunki",
+        "feature1Subtitle": "Odkryj ponad 500 kierunków na całym świecie ze zweryfikowanymi lokalnymi przewodnikami.",
+        "feature2Title": "Bezpieczna rezerwacja",
+        "feature2Subtitle": "Twoje dane i płatności są chronione przez wiodące standardy bezpieczeństwa.",
+        "feature3Title": "Wsparcie 24/7",
+        "feature3Subtitle": "Nasz dedykowany zespół wsparcia jest zawsze gotowy, aby pomóc Ci w razie jakichkolwiek pytań.",
+        "newsletterTitle": "Cotygodniowe perełki podróżnicze",
+        "newsletterSubtitle": "Dołącz do ponad 25 000 podróżników i otrzymuj naszą listę ukrytych miejsc."
+    },
+    "Common": {
+        "price": "Cena",
+        "from": "Od",
+        "bookNow": "Zarezerwuj teraz",
+        "new": "Nowość",
+        "reviews": "opinii",
+        "duration": "Czas trwania"
+    },
+    "Footer": {
+        "description": "Łączymy podróżników z wyjątkowymi i niezapomnianymi wrażeniami na całym świecie. Odkryj z nami lokalne tajemnice.",
+        "quickLinks": "Szybkie linki",
+        "categories": "Kategorie",
+        "newsletter": "Newsletter",
+        "newsletterSubtitle": "Zapisz się, aby otrzymywać najnowsze wiadomości podróżnicze i ekskluzywne oferty.",
+        "subscribe": "Zapisz się teraz",
+        "copyright": "© 2024 HolidaySync. Wszelkie prawa zastrzeżone."
+    }
+}

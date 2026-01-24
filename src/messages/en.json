@@ -1,0 +1,60 @@
+{
+    "Navbar": {
+        "destinations": "Destinations",
+        "activities": "Activities",
+        "about": "About",
+        "contact": "Contact",
+        "account": "Account",
+        "signIn": "Sign In",
+        "signOut": "Sign Out",
+        "myBookings": "My Bookings",
+        "adminConsole": "Admin Console"
+    },
+    "Hero": {
+        "badge": "Discover Unique Experiences",
+        "titleMain": "Experience the World",
+        "titleAccent": "Like Never Before",
+        "subtitle": "Discover unique activities, tours and hidden gems handpicked for your next adventure.",
+        "cta": "Explore Activities",
+        "secondaryCta": "How it works",
+        "location": "Location",
+        "where": "Where?",
+        "type": "Type",
+        "all": "All",
+        "date": "Date",
+        "search": "Search"
+    },
+    "Homepage": {
+        "trendingTitle": "Top Trending Activities",
+        "trendingSubtitle": "Handpicked experiences by our travel experts, guaranteed to create lifelong memories.",
+        "viewAll": "View all activities",
+        "destinationsTitle": "Popular Destinations",
+        "destinationsSubtitle": "Explore the most sought-after places on the planet, each with its own unique story.",
+        "featuresTitle": "Why Choose Us",
+        "feature1Title": "Global Destinations",
+        "feature1Subtitle": "Explore over 500+ destinations around the globe with verified local guides.",
+        "feature2Title": "Secure Booking",
+        "feature2Subtitle": "Your data and payments are protected by industry-leading security standards.",
+        "feature3Title": "24/7 Support",
+        "feature3Subtitle": "Our dedicated support team is always here to help you with any questions or issues.",
+        "newsletterTitle": "Weekly Travel Gems",
+        "newsletterSubtitle": "Join 25,000+ travelers and get our curated list of hidden spots."
+    },
+    "Common": {
+        "price": "Price",
+        "from": "From",
+        "bookNow": "Book Now",
+        "new": "New",
+        "reviews": "reviews",
+        "duration": "Duration"
+    },
+    "Footer": {
+        "description": "Connecting travelers with unique and unforgettable experiences worldwide. Explore local secrets with us.",
+        "quickLinks": "Quick Links",
+        "categories": "Categories",
+        "newsletter": "Newsletter",
+        "newsletterSubtitle": "Subscribe to get the latest travel news and exclusive offers.",
+        "subscribe": "Subscribe Now",
+        "copyright": "© 2024 HolidaySync. All rights reserved."
+    }
+}

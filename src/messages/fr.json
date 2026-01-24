@@ -1,0 +1,60 @@
+{
+    "Navbar": {
+        "destinations": "Destinations",
+        "activities": "Activités",
+        "about": "À propos",
+        "contact": "Contact",
+        "account": "Compte",
+        "signIn": "Se connecter",
+        "signOut": "Se déconnecter",
+        "myBookings": "Mes réservations",
+        "adminConsole": "Console Admin"
+    },
+    "Hero": {
+        "badge": "Découvrez des Expériences Uniques",
+        "titleMain": "Découvrez le monde",
+        "titleAccent": "comme jamais auparavant",
+        "subtitle": "Découvrez des activités uniques, des visites et des joyaux cachés triés sur le volet pour votre prochaine aventure.",
+        "cta": "Explorer les activités",
+        "secondaryCta": "Comment ça marche",
+        "location": "Lieu",
+        "where": "Où ?",
+        "type": "Type",
+        "all": "Tout",
+        "date": "Date",
+        "search": "Rechercher"
+    },
+    "Homepage": {
+        "trendingTitle": "Activités les plus populaires",
+        "trendingSubtitle": "Des expériences sélectionnées par nos experts en voyage, garanties de créer des souvenirs inoubliables.",
+        "viewAll": "Voir toutes les activités",
+        "destinationsTitle": "Destinations populaires",
+        "destinationsSubtitle": "Explorez les endroits les plus prisés de la planète, chacun avec sa propre histoire unique.",
+        "featuresTitle": "Pourquoi nous",
+        "feature1Title": "Destinations mondiales",
+        "feature1Subtitle": "Explorez plus de 500 destinations à travers le monde avec des guides locaux vérifiés.",
+        "feature2Title": "Réservation sécurisée",
+        "feature2Subtitle": "Vos données et vos paiements sont protégés par les normes de sécurité les plus strictes du secteur.",
+        "feature3Title": "Assistance 24/7",
+        "feature3Subtitle": "Notre équipe d'assistance dédiée est toujours là pour vous aider en cas de questions.",
+        "newsletterTitle": "Joyaux de voyage hebdomadaires",
+        "newsletterSubtitle": "Rejoignez plus de 25 000 voyageurs et recevez notre liste de lieux cachés."
+    },
+    "Common": {
+        "price": "Prix",
+        "from": "À partir de",
+        "bookNow": "Réserver maintenant",
+        "new": "Nouveau",
+        "reviews": "avis",
+        "duration": "Durée"
+    },
+    "Footer": {
+        "description": "Connecter les voyageurs à des expériences uniques et inoubliables dans le monde entier. Explorez les secrets locaux avec nous.",
+        "quickLinks": "Liens rapides",
+        "categories": "Catégories",
+        "newsletter": "Newsletter",
+        "newsletterSubtitle": "Abonnez-vous pour recevoir les dernières nouvelles de voyage et des offres exclusives.",
+        "subscribe": "S'abonner maintenant",
+        "copyright": "© 2024 HolidaySync. Tous droits réservés."
+    }
+}
