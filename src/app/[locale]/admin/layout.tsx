@@ -1,5 +1,5 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "@/i18n/routing";
 import { authOptions } from "@/lib/auth";
 import { Link } from "@/i18n/routing";
 import { LayoutDashboard, Map, Bike, CalendarCheck, Settings } from "lucide-react";
@@ -7,14 +7,17 @@ import { getTranslations } from "next-intl/server";
 
 export default async function AdminLayout({
     children,
+    params
 }: {
     children: React.ReactNode;
+    params: Promise<{ locale: string }>;
 }) {
+    await params;
     const session = await getServerSession(authOptions);
     const t = await getTranslations('Admin');
 
     if (!session || session.user?.role !== "ADMIN") {
-        redirect("/login");
+        redirect({ href: "/login" });
     }
 
     const navItems = [
@@ -37,7 +40,6 @@ export default async function AdminLayout({
                                 key={item.name}
                                 href={item.href}
                                 className="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-indigo-600 font-bold transition-colors"
-                            // In a real app, usePathname to highlight active
                             >
                                 <item.icon size={20} />
                                 <span>{item.name}</span>
