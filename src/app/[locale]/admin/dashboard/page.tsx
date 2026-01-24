@@ -18,7 +18,8 @@ import { getTranslations } from 'next-intl/server'
 import BookingStatusToggle from '@/components/admin/BookingStatusToggle'
 import { Link } from '@/i18n/routing'
 
-const AdminDashboard = async () => {
+const AdminDashboard = async (props: { params: Promise<{ locale: string }> }) => {
+    await props.params;
     const session = await getServerSession(authOptions)
     const t = await getTranslations('Admin')
     const dt = await getTranslations('Database')

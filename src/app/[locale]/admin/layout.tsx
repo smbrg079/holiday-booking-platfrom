@@ -12,12 +12,12 @@ export default async function AdminLayout({
     children: React.ReactNode;
     params: Promise<{ locale: string }>;
 }) {
-    await params;
+    const { locale } = await params;
     const session = await getServerSession(authOptions);
     const t = await getTranslations('Admin');
 
     if (!session || session.user?.role !== "ADMIN") {
-        redirect({ href: "/login" });
+        redirect({ href: "/login", locale: locale });
     }
 
     const navItems = [
