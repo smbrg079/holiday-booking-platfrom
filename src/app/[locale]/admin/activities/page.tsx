@@ -1,6 +1,6 @@
 import React from 'react'
 import prisma from '@/lib/prisma'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { Plus, Trash2, Edit, MapPin, Tag } from 'lucide-react'
 import { deleteActivity } from '@/app/actions/admin'
 import { formatPrice } from '@/lib/utils'

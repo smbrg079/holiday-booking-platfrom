@@ -16,6 +16,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
 import { getTranslations } from 'next-intl/server'
 import BookingStatusToggle from '@/components/admin/BookingStatusToggle'
+import { Link } from '@/i18n/routing'
 
 const AdminDashboard = async () => {
     const session = await getServerSession(authOptions)
@@ -136,7 +137,7 @@ const AdminDashboard = async () => {
                     </div>
 
                     <div className="p-8 border-t border-slate-100 bg-slate-50/30 text-center">
-                        <button className="text-indigo-600 font-bold hover:underline">{t('viewAllBookings')}</button>
+                        <Link href="/admin/bookings" className="text-indigo-600 font-bold hover:underline">{t('viewAllBookings')}</Link>
                     </div>
                 </div>
             </div>

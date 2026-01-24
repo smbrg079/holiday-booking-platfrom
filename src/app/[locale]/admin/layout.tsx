@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { LayoutDashboard, Map, Bike, CalendarCheck, Settings } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
