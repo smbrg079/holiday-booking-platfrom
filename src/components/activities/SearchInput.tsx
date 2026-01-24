@@ -4,8 +4,10 @@ import { useRouter } from '@/i18n/routing'
 import { useSearchParams } from 'next/navigation'
 import { useTransition, useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export default function SearchInput() {
+    const t = useTranslations('Activities')
     const router = useRouter()
     const searchParams = useSearchParams()
     const [isPending, startTransition] = useTransition()
@@ -35,7 +37,7 @@ export default function SearchInput() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search activities..."
+                placeholder={t('searchPlaceholder')}
                 className="pl-12 pr-6 py-3 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 w-[240px] md:w-[320px] transition-all outline-none font-medium"
             />
         </div>

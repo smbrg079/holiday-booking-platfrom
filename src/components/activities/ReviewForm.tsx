@@ -3,12 +3,14 @@
 import React, { useState } from 'react'
 import { submitReview } from '@/app/actions/reviews'
 import { Star, Send, CheckCircle2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 interface ReviewFormProps {
     activityId: string
 }
 
 export default function ReviewForm({ activityId }: ReviewFormProps) {
+    const t = useTranslations('ActivityDetails')
     const [rating, setRating] = useState(5)
     const [hover, setHover] = useState(0)
     const [comment, setComment] = useState('')
@@ -39,19 +41,19 @@ export default function ReviewForm({ activityId }: ReviewFormProps) {
         return (
             <div className="bg-emerald-50 p-8 rounded-[2rem] text-center border border-emerald-100 animate-in fade-in zoom-in duration-500">
                 <CheckCircle2 className="mx-auto text-emerald-500 mb-4" size={48} />
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Review Submitted!</h4>
-                <p className="text-slate-600">Thank you for sharing your experience with our community.</p>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">{t('reviewSubmitted')}</h4>
+                <p className="text-slate-600">{t('thankYouReview')}</p>
             </div>
         )
     }
 
     return (
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl space-y-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">Leave a Review</h3>
-            <p className="text-slate-500 text-sm mb-6">How was your experience? Your feedback helps other travelers.</p>
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">{t('leaveAReview')}</h3>
+            <p className="text-slate-500 text-sm mb-6">{t('howWasExperience')}</p>
 
             <div>
-                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Rating</label>
+                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">{t('rating')}</label>
                 <div className="flex space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                         <button
@@ -73,12 +75,12 @@ export default function ReviewForm({ activityId }: ReviewFormProps) {
             </div>
 
             <div>
-                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Your Experience</label>
+                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">{t('yourExperience')}</label>
                 <textarea
                     required
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    placeholder="What did you love about this activity?"
+                    placeholder={t('placeholderReview')}
                     rows={4}
                     className="w-full px-6 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 text-slate-600 font-medium placeholder:text-slate-400"
                 ></textarea>
@@ -90,10 +92,10 @@ export default function ReviewForm({ activityId }: ReviewFormProps) {
                 className="w-full py-5 bg-indigo-600 text-white font-black rounded-2xl hover:bg-slate-900 transition-all shadow-xl shadow-indigo-100 flex items-center justify-center space-x-3 disabled:opacity-50"
             >
                 {isSubmitting ? (
-                    <span>Submitting...</span>
+                    <span>{t('submitting')}</span>
                 ) : (
                     <>
-                        <span>Post Review</span>
+                        <span>{t('postReview')}</span>
                         <Send size={18} />
                     </>
                 )}

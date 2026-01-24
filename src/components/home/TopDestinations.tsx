@@ -7,6 +7,7 @@ import { getTranslations } from 'next-intl/server'
 
 const TopDestinations = async () => {
     const t = await getTranslations('Homepage');
+    const dt = await getTranslations('Database');
     const destinations = await prisma.destination.findMany({
         take: 4,
         include: {
@@ -51,14 +52,14 @@ const TopDestinations = async () => {
                                     <div className="flex items-center space-x-2 text-indigo-400 mb-2">
                                         <MapPin size={16} />
                                         <span className="text-xs font-black uppercase tracking-widest leading-none">
-                                            {destination._count.activities} Experiences
+                                            {destination._count.activities} {t('experiences')}
                                         </span>
                                     </div>
                                     <h3 className="text-2xl font-black mb-2 group-hover:translate-x-2 transition-transform duration-500">
-                                        {destination.name}
+                                        {dt(destination.name)}
                                     </h3>
                                     <div className="flex items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                        <span className="text-sm font-bold mr-2 text-white/80">Explore now</span>
+                                        <span className="text-sm font-bold mr-2 text-white/80">{t('exploreNow')}</span>
                                         <ArrowRight size={16} className="text-white" />
                                     </div>
                                 </div>

@@ -7,8 +7,10 @@ import Image from 'next/image'
 import { Link, useRouter } from '@/i18n/routing'
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 const LoginPage = () => {
+    const t = useTranslations('Auth')
     const router = useRouter()
     const searchParams = useSearchParams()
     const [email, setEmail] = useState('')
@@ -32,13 +34,13 @@ const LoginPage = () => {
             })
 
             if (result?.error) {
-                setError('Invalid email or password')
+                setError(t('invalidCredentials'))
             } else {
                 router.push(callbackUrl)
                 router.refresh()
             }
         } catch (err) {
-            setError('Something went wrong')
+            setError(t('somethingWrong'))
         } finally {
             setLoading(false)
         }
@@ -60,9 +62,9 @@ const LoginPage = () => {
                                 <span className="text-white font-bold text-2xl">H</span>
                             </div>
                         </Link>
-                        <h1 className="text-3xl font-black text-slate-900 mb-2">Welcome Back</h1>
+                        <h1 className="text-3xl font-black text-slate-900 mb-2">{t('welcomeBack')}</h1>
                         <p className="text-slate-400 font-medium">
-                            Log in to manage your bookings and explore more adventures.
+                            {t('loginDesc')}
                         </p>
                     </div>
 
@@ -73,7 +75,7 @@ const LoginPage = () => {
                             className="w-full flex items-center justify-center space-x-3 px-6 py-3.5 bg-white border-2 border-slate-200 rounded-2xl hover:bg-slate-50 hover:border-slate-300 transition-all group"
                         >
                             <Image src="https://www.svgrepo.com/show/475656/google-color.svg" width={20} height={20} alt="Google" />
-                            <span className="font-bold text-slate-700 text-sm">Continue with Google</span>
+                            <span className="font-bold text-slate-700 text-sm">{t('continueWithGoogle')}</span>
                         </button>
                     </div>
 
@@ -82,7 +84,7 @@ const LoginPage = () => {
                             <div className="w-full border-t border-slate-200"></div>
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-white px-4 text-slate-400 font-bold tracking-wider">Or continue with email</span>
+                            <span className="bg-white px-4 text-slate-400 font-bold tracking-wider">{t('orEmail')}</span>
                         </div>
                     </div>
 
@@ -100,7 +102,7 @@ const LoginPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Email Address
+                                {t('email')}
                             </label>
                             <div className="relative">
                                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -117,7 +119,7 @@ const LoginPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Password
+                                {t('password')}
                             </label>
                             <div className="relative">
                                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -142,10 +144,10 @@ const LoginPage = () => {
                         <div className="flex items-center justify-between">
                             <label className="flex items-center space-x-2 cursor-pointer">
                                 <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
-                                <span className="text-sm text-slate-600">Remember me</span>
+                                <span className="text-sm text-slate-600">{t('rememberMe')}</span>
                             </label>
                             <Link href="/auth/forgot-password" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-                                Forgot password?
+                                {t('forgotPassword')}
                             </Link>
                         </div>
 
@@ -154,16 +156,16 @@ const LoginPage = () => {
                             disabled={loading}
                             className="w-full flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200 disabled:opacity-50 disabled:cursor-not-allowed group mt-6"
                         >
-                            <span>{loading ? 'Signing in...' : 'Sign In'}</span>
+                            <span>{loading ? t('signingIn') : t('signIn')}</span>
                             {!loading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
                         </button>
                     </form>
 
                     <div className="mt-8 text-center">
                         <p className="text-slate-500 text-sm">
-                            Don't have an account?{' '}
+                            {t('noAccount')}{' '}
                             <Link href="/auth/register" className="text-indigo-600 font-bold hover:text-indigo-700">
-                                Sign up
+                                {t('signUp')}
                             </Link>
                         </p>
                     </div>
@@ -171,7 +173,7 @@ const LoginPage = () => {
                     <div className="mt-8 pt-6 border-t border-slate-100">
                         <div className="flex items-center justify-center space-x-2 text-slate-400 text-xs font-bold uppercase tracking-widest">
                             <ShieldCheck size={16} className="text-emerald-500" />
-                            <span>Secure & Private Connection</span>
+                            <span>{t('secureConnection')}</span>
                         </div>
                     </div>
                 </div>

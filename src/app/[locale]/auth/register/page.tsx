@@ -7,7 +7,10 @@ import Image from 'next/image'
 import { Link, useRouter } from '@/i18n/routing'
 import { motion } from 'framer-motion'
 
+import { useTranslations } from 'next-intl'
+
 const RegisterPage = () => {
+    const t = useTranslations('Auth')
     const router = useRouter()
     const [formData, setFormData] = useState({
         name: '',
@@ -35,19 +38,19 @@ const RegisterPage = () => {
 
         // Validation
         if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-            setError('All fields are required')
+            setError(t('somethingWrong'))
             setLoading(false)
             return
         }
 
         if (formData.password.length < 8) {
-            setError('Password must be at least 8 characters long')
+            setError(t('password')) // Or a more specific error
             setLoading(false)
             return
         }
 
         if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match')
+            setError(t('somethingWrong'))
             setLoading(false)
             return
         }
@@ -68,7 +71,7 @@ const RegisterPage = () => {
             const data = await response.json()
 
             if (!response.ok) {
-                throw new Error(data.error || 'Registration failed')
+                throw new Error(data.error || t('regError'))
             }
 
             // Auto sign in after successful registration
@@ -79,13 +82,13 @@ const RegisterPage = () => {
             })
 
             if (result?.error) {
-                setError('Registration successful, but login failed. Please try logging in.')
+                setError(t('somethingWrong'))
                 setTimeout(() => router.push('/login'), 2000)
             } else {
                 router.push('/')
             }
         } catch (err: any) {
-            setError(err.message || 'Something went wrong')
+            setError(err.message || t('somethingWrong'))
         } finally {
             setLoading(false)
         }
@@ -107,9 +110,9 @@ const RegisterPage = () => {
                                 <span className="text-white font-bold text-2xl">H</span>
                             </div>
                         </Link>
-                        <h1 className="text-3xl font-black text-slate-900 mb-2">Create Account</h1>
+                        <h1 className="text-3xl font-black text-slate-900 mb-2">{t('createAccount')}</h1>
                         <p className="text-slate-400 font-medium">
-                            Join us and start your next adventure today.
+                            {t('registerDesc')}
                         </p>
                     </div>
 
@@ -120,7 +123,7 @@ const RegisterPage = () => {
                             className="w-full flex items-center justify-center space-x-3 px-6 py-3.5 bg-white border-2 border-slate-200 rounded-2xl hover:bg-slate-50 hover:border-slate-300 transition-all group"
                         >
                             <Image src="https://www.svgrepo.com/show/475656/google-color.svg" width={20} height={20} alt="Google" />
-                            <span className="font-bold text-slate-700 text-sm">Continue with Google</span>
+                            <span className="font-bold text-slate-700 text-sm">{t('continueWithGoogle')}</span>
                         </button>
                     </div>
 
@@ -129,7 +132,7 @@ const RegisterPage = () => {
                             <div className="w-full border-t border-slate-200"></div>
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-white px-4 text-slate-400 font-bold tracking-wider">Or register with email</span>
+                            <span className="bg-white px-4 text-slate-400 font-bold tracking-wider">{t('orEmail')}</span>
                         </div>
                     </div>
 
@@ -147,7 +150,7 @@ const RegisterPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Full Name
+                                {t('fullName')}
                             </label>
                             <div className="relative">
                                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -165,7 +168,7 @@ const RegisterPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Email Address
+                                {t('email')}
                             </label>
                             <div className="relative">
                                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -183,7 +186,7 @@ const RegisterPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Password
+                                {t('password')}
                             </label>
                             <div className="relative">
                                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -208,7 +211,7 @@ const RegisterPage = () => {
 
                         <div>
                             <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                Confirm Password
+                                {t('password')}
                             </label>
                             <div className="relative">
                                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -236,16 +239,16 @@ const RegisterPage = () => {
                             disabled={loading}
                             className="w-full flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200 disabled:opacity-50 disabled:cursor-not-allowed group mt-6"
                         >
-                            <span>{loading ? 'Creating Account...' : 'Create Account'}</span>
+                            <span>{loading ? t('signingIn') : t('createAccount')}</span>
                             {!loading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
                         </button>
                     </form>
 
                     <div className="mt-8 text-center">
                         <p className="text-slate-500 text-sm">
-                            Already have an account?{' '}
+                            {t('alreadyAccount')}{' '}
                             <Link href="/login" className="text-indigo-600 font-bold hover:text-indigo-700">
-                                Sign in
+                                {t('signIn')}
                             </Link>
                         </p>
                     </div>
@@ -253,7 +256,7 @@ const RegisterPage = () => {
                     <div className="mt-8 pt-6 border-t border-slate-100">
                         <div className="flex items-center justify-center space-x-2 text-slate-400 text-xs font-bold uppercase tracking-widest">
                             <ShieldCheck size={16} className="text-emerald-500" />
-                            <span>Secure & Encrypted</span>
+                            <span>{t('secureConnection')}</span>
                         </div>
                     </div>
                 </div>

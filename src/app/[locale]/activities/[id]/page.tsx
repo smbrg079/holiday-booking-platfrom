@@ -10,13 +10,11 @@ import BookingSidebar from '@/components/activities/BookingSidebar'
 import ReviewForm from '@/components/activities/ReviewForm'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
+import { getTranslations } from 'next-intl/server'
 
 interface PageProps {
     params: Promise<{ id: string }>
 }
-
-
-
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { id } = await params
@@ -42,6 +40,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const ActivityDetailsPage = async ({ params }: PageProps) => {
     const { id } = await params
+    const t = await getTranslations('ActivityDetails')
+    const ct = await getTranslations('Common')
+    const dt = await getTranslations('Database')
 
     const activity = await prisma.activity.findUnique({
         where: { id },
@@ -92,15 +93,15 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
                     <div className="flex flex-wrap items-center gap-3 text-white/80 font-bold text-xs uppercase tracking-widest mb-4">
-                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <Link href="/" className="hover:text-white transition-colors">{t('home')}</Link>
                         <span>/</span>
-                        <Link href="/activities" className="hover:text-white transition-colors">Activities</Link>
+                        <Link href="/activities" className="hover:text-white transition-colors">{t('activities')}</Link>
                         <span>/</span>
-                        <span className="text-white">{activity.destination.name}</span>
+                        <span className="text-white">{dt(activity.destination.name)}</span>
                     </div>
 
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tight max-w-4xl">
-                        {activity.title}
+                        {dt(activity.title)}
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-6 text-white text-sm md:text-base font-bold">
@@ -108,11 +109,11 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                             <Star size={18} className="text-amber-400 fill-amber-400 mr-2" />
                             <span>4.9</span>
                             <span className="mx-2 opacity-50">|</span>
-                            <span className="text-white/80">124 Reviews</span>
+                            <span className="text-white/80">{activity.reviews.length} {ct('reviews')}</span>
                         </div>
                         <div className="flex items-center px-4 py-2 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/20">
                             <MapPin size={18} className="mr-2" />
-                            {activity.destination.name}
+                            {dt(activity.destination.name)}
                         </div>
                         <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/10">
                             <Clock size={18} className="mr-2" />
@@ -127,24 +128,24 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                 <div className="max-w-7xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-8">
                     <div className="flex items-center space-x-12">
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Pricing From</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t('pricingFrom')}</span>
                             <span className="text-2xl font-black text-slate-900">{formatPrice(activity.price)}</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Duration</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{ct('duration')}</span>
                             <span className="text-lg font-bold text-slate-700">{activity.duration}</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Availability</span>
-                            <span className="text-lg font-bold text-emerald-500">Available Today</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t('availability')}</span>
+                            <span className="text-lg font-bold text-emerald-500">{t('availableToday')}</span>
                         </div>
                     </div>
                     <div className="flex space-x-3">
                         <button className="px-6 py-3 border-2 border-slate-200 rounded-2xl font-bold text-slate-600 hover:bg-white hover:border-indigo-600 hover:text-indigo-600 transition-all">
-                            Save to Wishlist
+                            {t('saveToWishlist')}
                         </button>
                         <button className="px-10 py-3 bg-slate-900 text-white font-bold rounded-2xl hover:bg-indigo-600 transition-all shadow-xl shadow-slate-200">
-                            Share Tour
+                            {t('shareTour')}
                         </button>
                     </div>
                 </div>
@@ -180,10 +181,10 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                     <div className="mb-12">
                         <h3 className="text-2xl font-bold mb-6 flex items-center">
                             <Info className="mr-2 text-indigo-600" />
-                            Overview
+                            {t('overview')}
                         </h3>
                         <p className="text-slate-600 leading-relaxed text-lg">
-                            {activity.description}
+                            {dt(activity.title + '_desc')}
                         </p>
                     </div>
 
@@ -192,7 +193,7 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                     {/* Itinerary */}
                     {itinerary.length > 0 && (
                         <div className="mb-12">
-                            <h3 className="text-2xl font-bold mb-8">What to Expect</h3>
+                            <h3 className="text-2xl font-bold mb-8">{t('whatToExpect')}</h3>
                             <div className="space-y-6">
                                 {itinerary.map((step: string, i: number) => (
                                     <div key={i} className="flex space-x-6">
@@ -212,23 +213,23 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                     {/* Included / Excluded */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
                         <div>
-                            <h3 className="text-xl font-bold mb-6">What&apos;s Included</h3>
+                            <h3 className="text-xl font-bold mb-6">{t('included')}</h3>
                             <ul className="space-y-4">
                                 {included.map((item: string, i: number) => (
                                     <li key={i} className="flex items-start">
                                         <Check className="text-emerald-500 mr-3 mt-1 shrink-0" size={18} />
-                                        <span className="text-slate-600">{item}</span>
+                                        <span className="text-slate-600">{dt(item)}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold mb-6">What&apos;s Excluded</h3>
+                            <h3 className="text-xl font-bold mb-6">{t('excluded')}</h3>
                             <ul className="space-y-4">
                                 {excluded.map((item: string, i: number) => (
                                     <li key={i} className="flex items-start">
                                         <X className="text-rose-500 mr-3 mt-1 shrink-0" size={18} />
-                                        <span className="text-slate-600">{item}</span>
+                                        <span className="text-slate-600">{dt(item)}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -240,10 +241,10 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                     {/* Reviews Section */}
                     <div className="mb-12">
                         <h3 className="text-2xl font-bold mb-8 flex items-center justify-between">
-                            <span>Reviews ({activity.reviews.length})</span>
+                            <span>{ct('reviews')} ({activity.reviews.length})</span>
                             <div className="flex items-center text-lg">
                                 <Star size={20} className="text-amber-400 fill-amber-400 mr-1" />
-                                <span>{activity.reviews.length > 0 ? (activity.reviews.reduce((acc, r) => acc + r.rating, 0) / activity.reviews.length).toFixed(1) : 'New'}</span>
+                                <span>{activity.reviews.length > 0 ? (activity.reviews.reduce((acc, r) => acc + r.rating, 0) / activity.reviews.length).toFixed(1) : ct('new')}</span>
                             </div>
                         </h3>
 
@@ -256,7 +257,7 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                                                 {review.user?.name?.[0].toUpperCase() || 'U'}
                                             </div>
                                             <div>
-                                                <div className="font-bold text-slate-900">{review.user?.name || 'Traveler'}</div>
+                                                <div className="font-bold text-slate-900">{review.user?.name || t('traveler')}</div>
                                                 <div className="text-xs text-slate-400">{new Date(review.createdAt).toLocaleDateString()}</div>
                                             </div>
                                         </div>
@@ -269,7 +270,7 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                                     <p className="text-slate-600 leading-relaxed italic">&ldquo;{review.comment}&rdquo;</p>
                                 </div>
                             ))}
-                            {activity.reviews.length === 0 && <p className="text-slate-400 text-center py-12 border-2 border-dashed border-slate-100 rounded-3xl">No reviews yet. Be the first to share your experience!</p>}
+                            {activity.reviews.length === 0 && <p className="text-slate-400 text-center py-12 border-2 border-dashed border-slate-100 rounded-3xl">{t('noReviews')}</p>}
                         </div>
 
                         {/* Review Form Integration */}

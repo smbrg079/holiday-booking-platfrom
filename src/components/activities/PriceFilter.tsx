@@ -4,8 +4,10 @@ import { useRouter } from '@/i18n/routing'
 import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { formatPrice } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 export default function PriceFilter() {
+    const t = useTranslations('Activities')
     const router = useRouter()
     const searchParams = useSearchParams()
     const [isPending, startTransition] = useTransition()
@@ -29,7 +31,7 @@ export default function PriceFilter() {
 
     return (
         <div className={isPending ? 'opacity-50' : ''}>
-            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">Max Price</h3>
+            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">{t('maxPrice')}</h3>
             <input
                 type="range"
                 min="10"

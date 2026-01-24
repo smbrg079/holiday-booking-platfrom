@@ -8,8 +8,13 @@ import Image from 'next/image'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
 
+import { getTranslations } from 'next-intl/server'
+
 const UserDashboard = async () => {
     const session = await getServerSession(authOptions)
+    const t = await getTranslations('Dashboard')
+    const ct = await getTranslations('Common')
+    const dt = await getTranslations('Database')
 
     if (!session || !session.user) {
         redirect('/api/auth/signin')
@@ -34,8 +39,8 @@ const UserDashboard = async () => {
         <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-12">
-                    <h1 className="text-4xl font-black text-slate-900 mb-2">My Bookings</h1>
-                    <p className="text-slate-500 font-medium">Manage your upcoming adventures and view past trips.</p>
+                    <h1 className="text-4xl font-black text-slate-900 mb-2">{t('title')}</h1>
+                    <p className="text-slate-500 font-medium">{t('subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -51,7 +56,7 @@ const UserDashboard = async () => {
                                         <Image src={images[0] || 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957'} alt={booking.activity.title} fill className="object-cover" />
                                         <div className="absolute top-4 left-4">
                                             <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${isUpcoming ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-600'}`}>
-                                                {isUpcoming ? 'Upcoming' : 'Past'}
+                                                {isUpcoming ? t('upcoming') : t('past')}
                                             </span>
                                         </div>
                                     </div>
@@ -61,13 +66,13 @@ const UserDashboard = async () => {
                                             <div>
                                                 <div className="flex items-center text-indigo-600 text-xs font-bold uppercase tracking-widest mb-1">
                                                     <MapPin size={12} className="mr-1" />
-                                                    {booking.activity.destination.name}
+                                                    {dt(booking.activity.destination.name)}
                                                 </div>
-                                                <h3 className="text-xl font-bold text-slate-900 mb-2">{booking.activity.title}</h3>
+                                                <h3 className="text-xl font-bold text-slate-900 mb-2">{dt(booking.activity.title)}</h3>
                                             </div>
                                             <div className="text-right">
                                                 <p className="text-2xl font-black text-slate-900">{formatPrice(booking.totalPrice)}</p>
-                                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">{booking.participants} persons</p>
+                                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">{booking.participants} {t('persons')}</p>
                                             </div>
                                         </div>
 
@@ -84,10 +89,10 @@ const UserDashboard = async () => {
 
                                         <div className="flex space-x-3">
                                             <button className="flex-1 py-3 bg-slate-100 text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition-colors text-sm">
-                                                Download Ticket
+                                                {t('downloadTicket')}
                                             </button>
                                             <button className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm">
-                                                Manage
+                                                {t('manage')}
                                             </button>
                                         </div>
                                     </div>
@@ -98,10 +103,10 @@ const UserDashboard = async () => {
                         {bookings.length === 0 && (
                             <div className="py-24 text-center bg-white rounded-[3rem] border-2 border-dashed border-slate-200">
                                 <Calendar size={48} className="mx-auto text-slate-200 mb-4" />
-                                <h3 className="text-xl font-bold text-slate-900">No bookings yet</h3>
-                                <p className="text-slate-500 mb-8 text-lg">You haven&apos;t booked any adventures yet. Start exploring now!</p>
+                                <h3 className="text-xl font-bold text-slate-900">{t('noBookings')}</h3>
+                                <p className="text-slate-500 mb-8 text-lg">{t('noBookingsDesc')}</p>
                                 <Link href="/activities" className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-full hover:bg-slate-900 transition-all shadow-xl shadow-indigo-100">
-                                    Explore Activities
+                                    {t('exploreActivities')}
                                 </Link>
                             </div>
                         )}
@@ -114,9 +119,9 @@ const UserDashboard = async () => {
                                 <div className="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center font-black text-2xl text-white">
                                     {session.user.name?.[0].toUpperCase() || 'U'}
                                 </div>
-                                <div>
-                                    <h3 className="text-xl font-bold truncate max-w-[150px]">{session.user.name}</h3>
-                                    <p className="text-white/50 text-xs truncate max-w-[150px]">{session.user.email}</p>
+                                <div className="overflow-hidden">
+                                    <h3 className="text-xl font-bold truncate">{session.user.name}</h3>
+                                    <p className="text-white/50 text-xs truncate">{session.user.email}</p>
                                 </div>
                             </div>
 
@@ -124,14 +129,14 @@ const UserDashboard = async () => {
                                 <button className="w-full flex items-center justify-between p-4 rounded-2xl hover:bg-white/5 transition-colors group">
                                     <span className="font-bold flex items-center">
                                         <CreditCard size={18} className="mr-3 text-indigo-400" />
-                                        Payment Methods
+                                        {t('paymentMethods')}
                                     </span>
                                     <ChevronRight size={18} className="text-white/20 group-hover:translate-x-1 transition-transform" />
                                 </button>
                                 <button className="w-full flex items-center justify-between p-4 rounded-2xl hover:bg-white/5 transition-colors group">
                                     <span className="font-bold flex items-center">
                                         <ShoppingBag size={18} className="mr-3 text-indigo-400" />
-                                        Reward Points
+                                        {t('rewardPoints')}
                                     </span>
                                     <span className="text-indigo-400 font-black">1,450 pts</span>
                                 </button>
@@ -139,12 +144,12 @@ const UserDashboard = async () => {
                         </div>
 
                         <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-lg">
-                            <h3 className="text-lg font-black mb-6">Need Help?</h3>
+                            <h3 className="text-lg font-black mb-6">{t('needHelp')}</h3>
                             <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                                If you have questions about your bookings or need to reschedule, our support team is available 24/7.
+                                {t('helpDesc')}
                             </p>
                             <button className="w-full py-4 border-2 border-indigo-600 text-indigo-600 font-bold rounded-2xl hover:bg-indigo-50 transition-colors">
-                                Chat with Support
+                                {t('chatSupport')}
                             </button>
                         </div>
                     </div>

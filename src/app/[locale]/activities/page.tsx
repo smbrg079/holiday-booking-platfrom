@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description: 'Browse through hundreds of unique holiday activities and tours around the world.',
 }
 
+import { getTranslations } from 'next-intl/server'
 import SearchInput from '@/components/activities/SearchInput'
 import PriceFilter from '@/components/activities/PriceFilter'
 
@@ -25,6 +26,9 @@ interface PageProps {
 
 const ActivitiesPage = async ({ searchParams }: PageProps) => {
     const { destination, category, q, maxPrice } = await searchParams
+    const t = await getTranslations('Activities')
+    const ct = await getTranslations('Common')
+    const dt = await getTranslations('Database')
 
     const activities = await prisma.activity.findMany({
         where: {
@@ -56,15 +60,15 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
                     <div>
-                        <h1 className="text-4xl font-black text-slate-900 mb-2">Find Your Adventure</h1>
-                        <p className="text-slate-500 font-medium">{activities.length} activities found</p>
+                        <h1 className="text-4xl font-black text-slate-900 mb-2">{t('title')}</h1>
+                        <p className="text-slate-500 font-medium">{t('found', { count: activities.length })}</p>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-4">
                         <SearchInput />
                         <button className="flex items-center space-x-2 px-6 py-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-colors hidden md:flex">
                             <SlidersHorizontal size={18} className="text-indigo-600" />
-                            <span className="font-bold text-slate-700">Filters</span>
+                            <span className="font-bold text-slate-700">{t('filters')}</span>
                         </button>
                     </div>
                 </div>
@@ -73,7 +77,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                     {/* Sidebar Filters */}
                     <aside className="lg:w-64 shrink-0 space-y-10 hidden lg:block">
                         <div>
-                            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">Categories</h3>
+                            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">{t('categories')}</h3>
                             <div className="space-y-4">
                                 {categories.map((cat: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                                     <Link
@@ -81,14 +85,14 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                         href={`/activities?category=${cat.name}${destination ? `&destination=${destination}` : ''}${q ? `&q=${q}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}`}
                                         className={`block font-medium hover:text-indigo-600 transition-colors ${category === cat.name ? 'text-indigo-600' : 'text-slate-500'}`}
                                     >
-                                        {cat.name}
+                                        {dt(cat.name)}
                                     </Link>
                                 ))}
                             </div>
                         </div>
 
                         <div>
-                            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">Destinations</h3>
+                            <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-6">{t('destinations')}</h3>
                             <div className="space-y-4">
                                 {destinations.map((dest: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                                     <Link
@@ -96,7 +100,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                         href={`/activities?destination=${dest.name}${category ? `&category=${category}` : ''}${q ? `&q=${q}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}`}
                                         className={`block font-medium hover:text-indigo-600 transition-colors ${destination === dest.name ? 'text-indigo-600' : 'text-slate-500'}`}
                                     >
-                                        {dest.name}
+                                        {dt(dest.name)}
                                     </Link>
                                 ))}
                             </div>
@@ -123,7 +127,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                         />
                                         <div className="absolute bottom-4 left-4">
                                             <span className="px-3 py-1 bg-white/90 backdrop-blur-md rounded-lg text-xs font-bold text-slate-900 border border-white/20">
-                                                {activity.category.name}
+                                                {dt(activity.category.name)}
                                             </span>
                                         </div>
                                     </div>
@@ -131,12 +135,12 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                     <div className="p-6 flex-1 flex flex-col">
                                         <div className="flex items-center text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-3">
                                             <MapPin size={12} className="mr-1 text-indigo-500" />
-                                            {activity.destination.name}
+                                            {dt(activity.destination.name)}
                                         </div>
 
                                         <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
                                             <Link href={`/activities/${activity.id}`}>
-                                                {activity.title}
+                                                {dt(activity.title)}
                                             </Link>
                                         </h3>
 
@@ -147,12 +151,12 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                             <Star size={14} className="mr-1 text-amber-400 fill-amber-400" />
                                             {activity.reviews.length > 0
                                                 ? (activity.reviews.reduce((acc: number, r: any) => acc + r.rating, 0) / activity.reviews.length).toFixed(1)
-                                                : 'New'}
+                                                : ct('new')}
                                         </div>
 
                                         <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
                                             <div>
-                                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Price</p>
+                                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">{ct('price')}</p>
                                                 <p className="text-2xl font-black text-slate-900">{formatPrice(activity.price)}</p>
                                             </div>
                                             <Link
@@ -170,10 +174,10 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                         {activities.length === 0 && (
                             <div className="col-span-full py-24 text-center bg-white rounded-3xl border border-slate-100">
                                 <Search size={48} className="mx-auto text-slate-200 mb-4" />
-                                <h3 className="text-xl font-bold text-slate-900">No activities found</h3>
-                                <p className="text-slate-500">Try adjusting your filters or search terms.</p>
+                                <h3 className="text-xl font-bold text-slate-900">{t('noFound')}</h3>
+                                <p className="text-slate-500">{t('adjustFilters')}</p>
                                 <Link href="/activities" className="mt-6 inline-block text-indigo-600 font-bold underline underline-offset-4">
-                                    Clear all filters
+                                    {t('clearFilters')}
                                 </Link>
                             </div>
                         )}

@@ -33,6 +33,7 @@ const FeaturedActivities = ({
     viewAllLabel
 }: FeaturedActivitiesProps) => {
     const ct = useTranslations('Common');
+    const dt = useTranslations('Database');
 
     const container = {
         hidden: { opacity: 0 },
@@ -117,7 +118,7 @@ const FeaturedActivities = ({
                                 <div className="p-8 flex flex-col flex-1">
                                     <div className="flex items-center text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
                                         <MapPin size={14} className="mr-2 text-indigo-500" />
-                                        {activity.destination.name}
+                                        {dt(activity.destination.name)}
                                         <span className="mx-3 text-slate-200">|</span>
                                         <Star size={14} className="mr-2 text-amber-400 fill-amber-400" />
                                         {activity.reviews.length > 0
@@ -127,7 +128,7 @@ const FeaturedActivities = ({
 
                                     <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors leading-tight">
                                         <Link href={`/activities/${activity.id}`}>
-                                            {activity.title}
+                                            {dt(activity.title)}
                                         </Link>
                                     </h3>
 

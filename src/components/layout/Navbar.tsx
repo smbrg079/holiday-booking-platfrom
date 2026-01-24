@@ -164,7 +164,7 @@ const Navbar = () => {
                 <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-xl overflow-hidden animate-in slide-in-from-top duration-300">
                     <div className="flex flex-col p-6 space-y-4">
                         <div className="flex justify-between items-center mb-4 lg:hidden">
-                            <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Select Language</span>
+                            <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{t('selectLanguage')}</span>
                             <LanguageSwitcher />
                         </div>
                         {navLinks.map((link) => (

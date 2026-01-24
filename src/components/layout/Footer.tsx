@@ -72,11 +72,10 @@ const Footer = () => {
                     <div>
                         <h4 className="text-lg font-bold mb-8">{t('quickLinks')}</h4>
                         <ul className="space-y-4 text-slate-400">
-                            <li><Link href="/destinations" className="hover:text-white transition-colors">Destinations</Link></li>
-                            <li><Link href="/activities" className="hover:text-white transition-colors">All Activities</Link></li>
-                            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                            <li><Link href="/faq" className="hover:text-white transition-colors">Help & FAQ</Link></li>
+                            <li><Link href="/destinations" className="hover:text-white transition-colors">{nt('destinations')}</Link></li>
+                            <li><Link href="/activities" className="hover:text-white transition-colors">{nt('activities')}</Link></li>
+                            <li><Link href="/about" className="hover:text-white transition-colors">{nt('about')}</Link></li>
+                            <li><Link href="/contact" className="hover:text-white transition-colors">{nt('contact')}</Link></li>
                         </ul>
                     </div>
 
@@ -101,7 +100,7 @@ const Footer = () => {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email Address"
+                                placeholder={t('emailPlaceholder') || 'Email Address'}
                                 required
                                 className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-indigo-600 text-sm outline-none transition-all"
                             />
@@ -113,7 +112,7 @@ const Footer = () => {
                                 {status === 'loading' ? (
                                     <Loader2 size={18} className="animate-spin" />
                                 ) : status === 'success' ? (
-                                    <span className="flex items-center"><CheckCircle size={18} className="mr-2" /> Subscribed</span>
+                                    <span className="flex items-center"><CheckCircle size={18} className="mr-2" /> {t('subscribed') || 'Subscribed'}</span>
                                 ) : (
                                     t('subscribe')
                                 )}
@@ -135,9 +134,9 @@ const Footer = () => {
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-sm text-slate-500">
                     <p>{t('copyright')}</p>
                     <div className="flex space-x-8">
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Cookie Policy</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">{t('terms') || 'Terms of Service'}</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">{t('privacy') || 'Privacy Policy'}</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">{t('cookie') || 'Cookie Policy'}</Link>
                     </div>
                 </div>
             </div>

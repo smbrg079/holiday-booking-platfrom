@@ -26,8 +26,8 @@ export default function Newsletter() {
                 <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/20">
                     <CheckCircle2 className="text-white" size={40} />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-4">You're on the list!</h3>
-                <p className="text-indigo-100 text-lg">Thank you for subscribing. Get ready for exclusive travel deals and inspiration in your inbox.</p>
+                <h3 className="text-3xl font-bold text-white mb-4">{t('newsletterSuccessTitle')}</h3>
+                <p className="text-indigo-100 text-lg">{t('newsletterSuccessSubtitle')}</p>
             </div>
         )
     }
@@ -51,7 +51,7 @@ export default function Newsletter() {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
+                            placeholder={t('newsletterPlaceholder')}
                             className="flex-1 px-8 py-5 bg-white rounded-2xl focus:ring-4 focus:ring-white/20 outline-none text-slate-900 font-bold placeholder:text-slate-400 shadow-xl"
                         />
                         <button
@@ -62,14 +62,14 @@ export default function Newsletter() {
                                 <Loader2 className="animate-spin" size={20} />
                             ) : (
                                 <>
-                                    <span>Subscribe</span>
+                                    <span>{t('newsletterSubscribe')}</span>
                                     <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                 </>
                             )}
                         </button>
                     </form>
                     <p className="mt-4 text-xs text-indigo-200 text-center md:text-left font-medium opacity-60">
-                        No spam. Ever. Unsubscribe at any time.
+                        {t('newsletterNoSpam')}
                     </p>
                 </div>
             </div>
