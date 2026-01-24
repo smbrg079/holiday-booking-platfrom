@@ -219,5 +219,15 @@
         "addActivity": "Ajouter une activité",
         "actions": "Actions",
         "noActivitiesFound": "Aucune activité trouvée. Commencez par créer votre première expérience !"
+    },
+    "HowItWorks": {
+        "title": "Comment ça marche",
+        "subtitle": "Vos vacances de rêve en trois étapes simples",
+        "step1Title": "Choisissez la destination",
+        "step1Desc": "Découvrez des centaines de lieux et d'expériences uniques à travers le monde.",
+        "step2Title": "Réservez l'activité",
+        "step2Desc": "Sélectionnez votre date préférée et réservez en toute sécurité avec notre système de paiement premium.",
+        "step3Title": "Profitez de l'aventure",
+        "step3Desc": "Recevez votre billet instantanément et préparez-vous pour un voyage inoubliable."
     }
 }

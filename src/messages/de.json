@@ -219,5 +219,15 @@
         "addActivity": "Aktivität hinzufügen",
         "actions": "Aktionen",
         "noActivitiesFound": "Keine Aktivitäten gefunden. Erstellen Sie Ihr erstes Erlebnis!"
+    },
+    "HowItWorks": {
+        "title": "So funktioniert es",
+        "subtitle": "Ihr Traumurlaub in drei einfachen Schritten",
+        "step1Title": "Ziel wählen",
+        "step1Desc": "Entdecken Sie Hunderte von einzigartigen Orten und Erlebnissen rund um den Globus.",
+        "step2Title": "Aktivität buchen",
+        "step2Desc": "Wählen Sie Ihr bevorzugtes Datum und buchen Sie sicher mit unserem Premium-Zahlungssystem.",
+        "step3Title": "Abenteuer genießen",
+        "step3Desc": "Erhalten Sie Ihr Ticket sofort und machen Sie sich bereit für eine unvergessliche Reise."
     }
 }

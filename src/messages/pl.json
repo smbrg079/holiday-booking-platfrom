@@ -219,5 +219,15 @@
         "addActivity": "Dodaj atrakcję",
         "actions": "Akcje",
         "noActivitiesFound": "Nie znaleziono żadnych atrakcji. Zacznij od stworzenia pierwszej!"
+    },
+    "HowItWorks": {
+        "title": "Jak to działa",
+        "subtitle": "Twoje wymarzone wakacje w trzech prostych krokach",
+        "step1Title": "Wybierz cel podróży",
+        "step1Desc": "Odkryj setki unikalnych miejsc i doświadczeń na całym świecie.",
+        "step2Title": "Zarezerwuj atrakcję",
+        "step2Desc": "Wybierz preferowaną datę i zarezerwuj bezpiecznie dzięki naszemu systemowi płatności premium.",
+        "step3Title": "Ciesz się przygodą",
+        "step3Desc": "Otrzymaj bilet natychmiast i przygotuj się na niezapomnianą podróż."
     }
 }
