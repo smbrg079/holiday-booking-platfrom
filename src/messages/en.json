@@ -197,7 +197,22 @@
         "poor": "Poor",
         "terrible": "Terrible",
         "yourReview": "Your Review",
-        "shareDetails": "Share details of your own experience at this place"
+        "shareDetails": "Share details of your own experience at this place",
+        "yourExperience": "Your Experience",
+        "placeholderReview": "Tell us about your experience...",
+        "postReview": "Post Review"
+    },
+    "Booking": {
+        "pricePerPerson": "Price per person",
+        "bestPrice": "Best Price Guarantee",
+        "selectDate": "Select Date",
+        "noSlots": "No slots available",
+        "participants": "Participants",
+        "grandTotal": "Grand Total",
+        "submitting": "Processing...",
+        "bookNow": "Book Now",
+        "freeCancellation": "Free cancellation up to 24 hours before",
+        "failed": "Booking failed. Please try again."
     },
     "Admin": {
         "dashboard": "Dashboard",
