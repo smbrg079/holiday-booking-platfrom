@@ -58,7 +58,8 @@
         "priceRange": "Price Range",
         "noFound": "No activities found",
         "adjustFilters": "Try adjusting your filters to find what you are looking for.",
-        "clearFilters": "Clear all filters"
+        "clearFilters": "Clear all filters",
+        "searchPlaceholder": "Search activities..."
     },
     "Common": {
         "price": "Price",
