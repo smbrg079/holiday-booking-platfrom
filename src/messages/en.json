@@ -68,7 +68,8 @@
         "bookNow": "Book Now",
         "perPerson": "per person",
         "reviews": "reviews",
-        "from": "from"
+        "from": "from",
+        "duration": "Duration"
     },
     "Auth": {
         "welcomeBack": "Welcome Back",
