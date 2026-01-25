@@ -187,7 +187,17 @@
         "pricingFrom": "Pricing from",
         "availableToday": "Available Today",
         "noReviews": "No reviews yet. Be the first to share your experience!",
-        "traveler": "Traveler"
+        "traveler": "Traveler",
+        "leaveAReview": "Leave a Review",
+        "howWasExperience": "How was your experience?",
+        "yourRating": "Your Rating",
+        "excellent": "Excellent",
+        "good": "Good",
+        "average": "Average",
+        "poor": "Poor",
+        "terrible": "Terrible",
+        "yourReview": "Your Review",
+        "shareDetails": "Share details of your own experience at this place"
     },
     "Admin": {
         "dashboard": "Dashboard",
