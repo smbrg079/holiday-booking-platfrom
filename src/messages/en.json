@@ -38,7 +38,16 @@
         "feature2Title": "Secure Booking",
         "feature2Subtitle": "Your data and payments are always protected by industry-leading security.",
         "feature3Title": "24/7 Support",
-        "feature3Subtitle": "Our dedicated team is always here to help you throughout your journey."
+        "feature3Subtitle": "Our dedicated team is always here to help you throughout your journey.",
+        "featuresTitle": "Why Choose Us",
+        "newsletterTitle": "Weekly Travel Gems",
+        "newsletterSubtitle": "Join over 25,000 travelers and get our curated list of hidden spots.",
+        "newsletterPlaceholder": "Enter your email",
+        "newsletterSubscribe": "Subscribe",
+        "newsletterSubscribing": "Subscribing...",
+        "newsletterNoSpam": "No spam. Ever. Unsubscribe anytime.",
+        "newsletterSuccessTitle": "You're on the list!",
+        "newsletterSuccessSubtitle": "Thanks for subscribing. Expect exclusive travel deals and inspiration in your inbox."
     },
     "Activities": {
         "title": "Activities",
