@@ -182,7 +182,11 @@
         "total": "Total",
         "perPerson": "per person",
         "loginToBook": "Login to Book",
-        "availability": "Availability"
+        "availability": "Availability",
+        "pricingFrom": "Pricing from",
+        "availableToday": "Available Today",
+        "noReviews": "No reviews yet. Be the first to share your experience!",
+        "traveler": "Traveler"
     },
     "Admin": {
         "dashboard": "Dashboard",
