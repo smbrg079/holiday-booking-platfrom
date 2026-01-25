@@ -87,8 +87,8 @@ const RegisterPage = () => {
             } else {
                 router.push('/')
             }
-        } catch (err: any) {
-            setError(err.message || t('somethingWrong'))
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : t('somethingWrong'))
         } finally {
             setLoading(false)
         }

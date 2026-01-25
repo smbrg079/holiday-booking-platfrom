@@ -29,7 +29,7 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as "en" | "ar" | "de" | "pl" | "fr")) {
     notFound();
   }
 

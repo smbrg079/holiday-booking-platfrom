@@ -17,7 +17,7 @@ export default function NotFound() {
                 <h1 className="text-9xl font-black text-slate-200 leading-none mb-0">404</h1>
                 <h2 className="text-2xl font-bold text-slate-900 -mt-8 mb-4 relative z-10">Destination Not Found</h2>
                 <p className="text-slate-500 mb-10 text-lg">
-                    Looks like this spot isn't on our map yet. Let's get you back to familiar territory.
+                    Looks like this spot isn&apos;t on our map yet. Let&apos;s get you back to familiar territory.
                 </p>
 
                 <div className="space-y-4">

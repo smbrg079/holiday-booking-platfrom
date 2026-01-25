@@ -1,9 +1,8 @@
 import { getRequestConfig } from 'next-intl/server';
 import { routing } from './routing';
 
-export default getRequestConfig(async (params: any) => {
-    // Support both old and new next-intl parameter patterns
-    const locale = (await params.requestLocale) || params.locale || routing.defaultLocale;
+export default getRequestConfig(async ({ requestLocale }: { requestLocale: Promise<string | undefined> }) => {
+    const locale = (await requestLocale) || routing.defaultLocale;
 
     return {
         locale,

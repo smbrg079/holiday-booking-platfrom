@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { getStripe } from '@/lib/stripe-client'
+import { StripeElementsOptions } from '@stripe/stripe-js'
 import CheckoutForm from './CheckoutForm'
 import PayPalButton from './PayPalButton'
 import { Loader2, CreditCard, ShieldCheck } from 'lucide-react'
@@ -98,7 +99,7 @@ export default function PaymentWrapper({ bookingId, amount, locale }: PaymentWra
             {paymentMethod === 'stripe' ? (
                 <>
                     {clientSecret ? (
-                        <Elements options={options as any} stripe={stripePromise}>
+                        <Elements options={options as StripeElementsOptions} stripe={stripePromise}>
                             <CheckoutForm amount={amount} locale={locale} />
                         </Elements>
                     ) : (
@@ -115,7 +116,7 @@ export default function PaymentWrapper({ bookingId, amount, locale }: PaymentWra
                         PayPal Checkout
                     </h3>
                     <div className="p-6 bg-slate-50 rounded-2xl mb-8 text-center text-slate-500 text-sm">
-                        Confirm your booking by using the PayPal button below. You will be redirected to PayPal's secure site.
+                        Confirm your booking by using the PayPal button below. You will be redirected to PayPal&apos;s secure site.
                     </div>
                     <PayPalButton amount={amount} bookingId={bookingId} locale={locale} />
 

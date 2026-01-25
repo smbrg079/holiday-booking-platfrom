@@ -1,6 +1,9 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => {
+    if (!process.env.RESEND_API_KEY) return null;
+    return new Resend(process.env.RESEND_API_KEY);
+};
 
 export const sendBookingConfirmation = async (
     email: string,
@@ -9,7 +12,8 @@ export const sendBookingConfirmation = async (
     totalPrice: number,
     date: Date
 ) => {
-    if (!process.env.RESEND_API_KEY) {
+    const resend = getResend();
+    if (!resend) {
         console.warn("RESEND_API_KEY is missing. Skipping email.");
         return;
     }

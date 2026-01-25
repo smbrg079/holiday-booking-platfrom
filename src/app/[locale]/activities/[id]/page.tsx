@@ -249,7 +249,7 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
                         </h3>
 
                         <div className="space-y-8 mb-16">
-                            {activity.reviews.map((review: any) => (
+                            {activity.reviews.map((review: { id: string; rating: number; comment: string | null; createdAt: Date | string; user: { name: string | null } | null }) => (
                                 <div key={review.id} className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="flex items-center space-x-3">

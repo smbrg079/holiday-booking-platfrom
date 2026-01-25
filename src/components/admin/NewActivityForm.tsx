@@ -147,7 +147,7 @@ export default function NewActivityForm({ destinations, categories }: Props) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">What's Included (JSON)</label>
+                            <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">What&apos;s Included (JSON)</label>
                             <textarea
                                 name="included"
                                 placeholder='["Guide", "Lunch"]'
@@ -155,7 +155,7 @@ export default function NewActivityForm({ destinations, categories }: Props) {
                             ></textarea>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">What's Excluded (JSON)</label>
+                            <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">What&apos;s Excluded (JSON)</label>
                             <textarea
                                 name="excluded"
                                 placeholder='["Tips", "Insurance"]'

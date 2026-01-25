@@ -150,7 +150,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                                             <span className="mx-2 text-slate-200">|</span>
                                             <Star size={14} className="mr-1 text-amber-400 fill-amber-400" />
                                             {activity.reviews.length > 0
-                                                ? (activity.reviews.reduce((acc: number, r: any) => acc + r.rating, 0) / activity.reviews.length).toFixed(1)
+                                                ? (activity.reviews.reduce((acc: number, r: { rating: number }) => acc + r.rating, 0) / activity.reviews.length).toFixed(1)
                                                 : ct('new')}
                                         </div>
 
