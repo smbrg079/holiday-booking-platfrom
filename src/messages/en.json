@@ -59,7 +59,8 @@
         "noFound": "No activities found",
         "adjustFilters": "Try adjusting your filters to find what you are looking for.",
         "clearFilters": "Clear all filters",
-        "searchPlaceholder": "Search activities..."
+        "searchPlaceholder": "Search activities...",
+        "maxPrice": "Max Price"
     },
     "Common": {
         "price": "Price",
