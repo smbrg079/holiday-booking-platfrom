@@ -83,7 +83,12 @@
         "continueWithGoogle": "Continue with Google",
         "orEmail": "or continue with email",
         "invalidCredentials": "Invalid email or password",
-        "somethingWrong": "Something went wrong. Please try again."
+        "somethingWrong": "Something went wrong. Please try again.",
+        "createAccount": "Create an Account",
+        "registerDesc": "Join us to book exclusive activities and managing your trips.",
+        "fullName": "Full Name",
+        "alreadyAccount": "Already have an account?",
+        "regError": "Registration failed. Please try again."
     },
     "Footer": {
         "description": "Premium holiday activity booking platform. Making your travel memories unforgettable.",
