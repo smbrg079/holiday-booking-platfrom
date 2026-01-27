@@ -64,6 +64,20 @@ async function main() {
                 image: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b',
             },
         }),
+        prisma.destination.create({
+            data: {
+                name: 'Agadir',
+                description: 'A major city in Morocco, on the shore of the Atlantic Ocean near the foot of the Atlas Mountains. Known for its golf courses, wide crescent beach and seaside promenade.',
+                image: 'https://images.unsplash.com/photo-1542345759-3d120afa748d',
+            },
+        }),
+        prisma.destination.create({
+            data: {
+                name: 'Taroudant',
+                description: 'Known as the Grandmother of Marrakech, this historic city offers authentic Berber culture, enclosed by magnificent red-mud walls.',
+                image: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70',
+            },
+        }),
     ])
 
     // Create Categories
@@ -151,6 +165,46 @@ async function main() {
             slots: {
                 create: [
                     { startTime: new Date('2026-06-01T09:00:00Z'), endTime: new Date('2026-06-01T13:00:00Z'), capacity: 8 },
+                ]
+            }
+        },
+    })
+
+    // Agadir - Adventure
+    await prisma.activity.create({
+        data: {
+            title: 'Surf Lesson in Taghazout',
+            description: 'Learn to surf in the world-famous waves of Taghazout, just north of Agadir. Perfect for beginners and intermediates.',
+            duration: '4 hours',
+            price: 40.0,
+            destinationId: destinations[4].id,
+            categoryId: categories[0].id,
+            images: JSON.stringify(['https://images.unsplash.com/photo-1502680390469-be75c86b636f']),
+            included: JSON.stringify(['Equipment', 'Instructor', 'Transport']),
+            excluded: JSON.stringify(['Lunch']),
+            slots: {
+                create: [
+                    { startTime: new Date('2026-06-01T09:00:00Z'), endTime: new Date('2026-06-01T13:00:00Z'), capacity: 10 },
+                ]
+            }
+        },
+    })
+
+    // Taroudant - Cultural
+    await prisma.activity.create({
+        data: {
+            title: 'Hidden Oasis & City Walls',
+            description: 'Explore the ancient ramparts of Taroudant and visit the soothing Tiout Oasis. A journey through history and nature.',
+            duration: '6 hours',
+            price: 50.0,
+            destinationId: destinations[5].id,
+            categoryId: categories[1].id,
+            images: JSON.stringify(['https://images.unsplash.com/photo-1512552888880-b0c67e8a937a']),
+            included: JSON.stringify(['Guide', 'Carriage ride', 'Lunch']),
+            excluded: JSON.stringify(['Tips']),
+            slots: {
+                create: [
+                    { startTime: new Date('2026-06-01T10:00:00Z'), endTime: new Date('2026-06-01T16:00:00Z'), capacity: 12 },
                 ]
             }
         },

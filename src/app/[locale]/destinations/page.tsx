@@ -33,7 +33,7 @@ const DestinationsPage = async () => {
                     {destinations.map((dest) => (
                         <Link
                             key={dest.id}
-                            href={`/activities?destination=${dest.name}`}
+                            href={`/destinations/${encodeURIComponent(dest.name)}`}
                             className="group relative h-[400px] rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
                         >
                             <Image

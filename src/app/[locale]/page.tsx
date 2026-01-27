@@ -3,6 +3,7 @@ import TopDestinations from "@/components/home/TopDestinations";
 import FeaturedActivities from "@/components/home/FeaturedActivities";
 import { Plane, ShieldCheck, Headphones, MapPin } from "lucide-react";
 import Newsletter from "@/components/home/Newsletter";
+import PromotedDestinations from "@/components/home/PromotedDestinations";
 import prisma from "@/lib/prisma";
 import { getTranslations } from "next-intl/server";
 
@@ -35,6 +36,8 @@ export default async function Home() {
         destinations={destinations}
         categories={categories}
       />
+
+      <PromotedDestinations />
 
       <TopDestinations />
 
@@ -107,6 +110,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* Newsletter Section */}
       <section className="py-32 bg-indigo-600 relative overflow-hidden">

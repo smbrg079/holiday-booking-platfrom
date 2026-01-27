@@ -35,7 +35,7 @@ const TopDestinations = async () => {
                     {destinations.map((destination, index) => (
                         <Link
                             key={destination.id}
-                            href={`/activities?destination=${destination.name}`}
+                            href={`/destinations/${encodeURIComponent(destination.name)}`}
                             className={`group relative overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${index % 4 === 1 || index % 4 === 2 ? 'lg:translate-y-8' : ''
                                 }`}
                         >
