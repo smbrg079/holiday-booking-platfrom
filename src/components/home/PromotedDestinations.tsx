@@ -21,7 +21,7 @@ const PromotedDestinations = () => {
             slug: "Agadir",
             title: t('Agadir_title'),
             description: t('Agadir_desc'),
-            image: "https://images.unsplash.com/photo-1542345759-3d120afa748d?q=80&w=2670&auto=format&fit=crop",
+            image: "/images/agadir.png",
             color: "from-sky-400 via-blue-500 to-indigo-600",
             icon: Palmtree,
             stats: [t('Agadir_stat1'), t('Agadir_stat2'), t('Agadir_stat3')]
@@ -31,7 +31,7 @@ const PromotedDestinations = () => {
             slug: "Taroudant",
             title: t('Taroudant_title'),
             description: t('Taroudant_desc'),
-            image: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=2670&auto=format&fit=crop",
+            image: "/images/taroudant.png",
             color: "from-orange-400 via-rose-500 to-red-600",
             icon: History,
             stats: [t('Taroudant_stat1'), t('Taroudant_stat2'), t('Taroudant_stat3')]
