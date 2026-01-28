@@ -33,18 +33,18 @@ export default function Newsletter() {
     }
 
     return (
-        <div className="bg-white/10 backdrop-blur-xl p-12 md:p-16 rounded-[3rem] border border-white/20 max-w-5xl mx-auto shadow-2xl relative overflow-hidden group">
-            {/* Background Decoration */}
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-700" />
-            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-indigo-400/10 rounded-full blur-3xl group-hover:bg-indigo-400/20 transition-colors duration-700" />
-
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
-                <div className="text-center md:text-left flex-1">
-                    <h2 className="text-3xl md:text-4xl font-black text-white mb-4">{t('newsletterTitle')}</h2>
-                    <p className="text-indigo-100 text-lg">{t('newsletterSubtitle')}</p>
+        <div className="bg-transparent p-12 md:p-20 rounded-[4rem] border border-white/30 max-w-6xl mx-auto relative overflow-hidden group">
+            <div className="relative z-10 flex flex-col items-center gap-12 text-center text-white">
+                <div className="space-y-6 max-w-3xl">
+                    <h2 className="text-4xl md:text-7xl font-serif italic drop-shadow-2xl leading-tight">
+                        {t('newsletterTitle')}
+                    </h2>
+                    <p className="text-white/80 text-lg md:text-2xl font-medium drop-shadow-lg">
+                        {t('newsletterSubtitle')}
+                    </p>
                 </div>
 
-                <div className="w-full md:w-auto flex-1">
+                <div className="w-full max-w-2xl">
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
                         <input
                             type="email"
@@ -52,23 +52,23 @@ export default function Newsletter() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder={t('newsletterPlaceholder')}
-                            className="flex-1 px-8 py-5 bg-white rounded-2xl focus:ring-4 focus:ring-white/20 outline-none text-slate-900 font-bold placeholder:text-slate-400 shadow-xl"
+                            className="flex-1 px-8 py-5 bg-transparent border border-white/40 rounded-2xl outline-none text-white font-bold placeholder:text-white/40 focus:border-white transition-all text-lg"
                         />
                         <button
                             disabled={status === 'loading'}
-                            className="px-10 py-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-black transition-all shadow-xl flex items-center justify-center space-x-3 group/btn"
+                            className="px-10 py-5 bg-white text-slate-900 font-black rounded-2xl hover:bg-amber-400 transition-all shadow-2xl flex items-center justify-center space-x-3 shrink-0 group/btn"
                         >
                             {status === 'loading' ? (
                                 <Loader2 className="animate-spin" size={20} />
                             ) : (
                                 <>
-                                    <span>{t('newsletterSubscribe')}</span>
+                                    <span className="uppercase tracking-[0.2em] text-xs">{t('newsletterSubscribe')}</span>
                                     <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                 </>
                             )}
                         </button>
                     </form>
-                    <p className="mt-4 text-xs text-indigo-200 text-center md:text-left font-medium opacity-60">
+                    <p className="mt-8 text-[11px] text-white/50 font-black uppercase tracking-[0.3em] drop-shadow-md">
                         {t('newsletterNoSpam')}
                     </p>
                 </div>

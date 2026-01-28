@@ -103,7 +103,7 @@ export default async function Home() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-slate-900/20" />
 
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center text-white">
           <Newsletter />
