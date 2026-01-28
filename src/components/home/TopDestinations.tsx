@@ -8,6 +8,7 @@ import { getTranslations } from 'next-intl/server'
 const TopDestinations = async () => {
     const t = await getTranslations('Homepage');
     const dt = await getTranslations('Database');
+
     const destinations = await prisma.destination.findMany({
         take: 4,
         include: {

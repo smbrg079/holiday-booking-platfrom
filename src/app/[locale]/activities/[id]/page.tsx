@@ -44,6 +44,7 @@ const ActivityDetailsPage = async ({ params }: PageProps) => {
     const ct = await getTranslations('Common')
     const dt = await getTranslations('Database')
 
+
     const activity = await prisma.activity.findUnique({
         where: { id },
         include: {

@@ -35,6 +35,7 @@ const FeaturedActivities = ({
     const ct = useTranslations('Common');
     const dt = useTranslations('Database');
 
+
     const container = {
         hidden: { opacity: 0 },
         show: {

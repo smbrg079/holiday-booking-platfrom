@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SessionProvider from "@/components/providers/SessionProvider";
+import AIAssistant from "@/components/ai/AIAssistant";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -11,6 +12,7 @@ import { routing } from '@/i18n/routing';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: {
@@ -37,12 +39,13 @@ export default async function RootLayout({
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={dir} className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
+    <html lang={locale} dir={dir} className={`${inter.variable} ${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-sans bg-white text-slate-900 antialiased" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <SessionProvider>
             <Navbar />
             <main>{children}</main>
+            <AIAssistant />
             <Footer />
           </SessionProvider>
         </NextIntlClientProvider>

@@ -1,11 +1,15 @@
 import Hero from "@/components/home/Hero";
 import TopDestinations from "@/components/home/TopDestinations";
 import FeaturedActivities from "@/components/home/FeaturedActivities";
-import { Plane, ShieldCheck, Headphones, MapPin } from "lucide-react";
 import Newsletter from "@/components/home/Newsletter";
 import PromotedDestinations from "@/components/home/PromotedDestinations";
+import WhyChoose from "@/components/home/WhyChoose";
 import prisma from "@/lib/prisma";
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import { MapPin, ShieldCheck, Plane } from "lucide-react";
+
+const NEWSLETTER_BG = "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=2670&auto=format&fit=crop";
 
 export default async function Home() {
   const t = await getTranslations('Homepage');
@@ -13,7 +17,7 @@ export default async function Home() {
 
   const [activities, destinations, categories] = await Promise.all([
     prisma.activity.findMany({
-      take: 3,
+      take: 6,
       include: {
         destination: true,
         category: true,
@@ -27,11 +31,16 @@ export default async function Home() {
     prisma.category.findMany({ select: { id: true, name: true } })
   ])
 
-  // Cast activities to any to avoid deep typing issues in this step
   const serializedActivities = JSON.parse(JSON.stringify(activities));
 
+  const featuresList = [
+    { title: t('feature1Title'), desc: t('feature1Subtitle'), iconName: 'Globe', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+    { title: t('feature2Title'), desc: t('feature2Subtitle'), iconName: 'ShieldCheck', color: 'text-emerald-600', bg: 'bg-emerald-50' },
+    { title: t('feature3Title'), desc: t('feature3Subtitle'), iconName: 'Compass', color: 'text-amber-600', bg: 'bg-amber-50' },
+  ];
+
   return (
-    <div>
+    <div className="bg-white">
       <Hero
         destinations={destinations}
         categories={categories}
@@ -49,77 +58,54 @@ export default async function Home() {
       />
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="mb-16">
-            <h2 className="text-4xl font-black text-slate-900 mb-4">{ht('title')}</h2>
-            <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">{ht('subtitle')}</p>
+      <section id="how-it-works" className="py-32 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">{ht('title')}</h2>
+            <p className="text-slate-500 font-medium max-w-2xl mx-auto text-xl">{ht('subtitle')}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            {/* Connecting lines for desktop */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0" />
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
-              { id: 1, icon: MapPin, title: ht('step1Title'), desc: ht('step1Desc') },
-              { id: 2, icon: ShieldCheck, title: ht('step2Title'), desc: ht('step2Desc') },
-              { id: 3, icon: Plane, title: ht('step3Title'), desc: ht('step3Desc') },
+              { id: 1, icon: MapPin, title: ht('step1Title'), desc: ht('step1Desc'), color: 'bg-indigo-600' },
+              { id: 2, icon: ShieldCheck, title: ht('step2Title'), desc: ht('step2Desc'), color: 'bg-amber-500' },
+              { id: 3, icon: Plane, title: ht('step3Title'), desc: ht('step3Desc'), color: 'bg-emerald-500' },
             ].map((step, idx) => (
-              <div key={step.id} className="relative z-10 flex flex-col items-center">
-                <div className="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-white shadow-2xl shadow-indigo-200 mb-8 border-4 border-white">
-                  <step.icon size={32} />
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-black">
-                    {idx + 1}
+              <div key={step.id} className="relative group">
+                <div className="flex flex-col items-center text-center">
+                  <div className={`w-28 h-28 ${step.color} rounded-[2.5rem] flex items-center justify-center text-white shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 mb-10`}>
+                    <step.icon size={44} />
+                    <div className="absolute -top-3 -right-3 w-10 h-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-lg font-black shadow-lg">
+                      {idx + 1}
+                    </div>
                   </div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{step.title}</h3>
+                  <p className="text-slate-500 font-medium leading-relaxed px-6 text-lg">{step.desc}</p>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-4">{step.title}</h3>
-                <p className="text-slate-500 font-medium leading-relaxed px-4">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-indigo-100 text-indigo-600 mb-8 border border-slate-50">
-                <Plane size={36} />
-              </div>
-              <h3 className="text-2xl font-black mb-4">{t('feature1Title')}</h3>
-              <p className="text-slate-500 font-medium">{t('feature1Subtitle')}</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-indigo-100 text-indigo-600 mb-8 border border-slate-50">
-                <ShieldCheck size={36} />
-              </div>
-              <h3 className="text-2xl font-black mb-4">{t('feature2Title')}</h3>
-              <p className="text-slate-500 font-medium">{t('feature2Subtitle')}</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-indigo-100 text-indigo-600 mb-8 border border-slate-50">
-                <Headphones size={36} />
-              </div>
-              <h3 className="text-2xl font-black mb-4">{t('feature3Title')}</h3>
-              <p className="text-slate-500 font-medium">{t('feature3Subtitle')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
+      <WhyChoose
+        title={<>{t('featuresTitle').split('HolidaySync')[0]}<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">HolidaySync</span>{t('featuresTitle').split('HolidaySync')[1]}</>}
+        subtitle={t('featuresSubtitle')}
+        features={featuresList}
+      />
 
       {/* Newsletter Section */}
-      <section className="py-32 bg-indigo-600 relative overflow-hidden">
-        {/* Background Shapes */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-30" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-400 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl opacity-20" />
+      <section className="py-40 relative overflow-hidden">
+        <Image
+          src={NEWSLETTER_BG}
+          alt="Newsletter Background"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center text-white">
           <Newsletter />
         </div>
       </section>

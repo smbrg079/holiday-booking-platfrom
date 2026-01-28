@@ -26,6 +26,7 @@ const Navbar = () => {
     const navLinks = [
         { name: t('destinations'), href: '/destinations' },
         { name: t('activities'), href: '/activities' },
+        { name: t('tripPlanner'), href: '/planner' },
         { name: t('about'), href: '/about' },
         { name: t('contact'), href: '/contact' },
     ]
@@ -72,7 +73,7 @@ const Navbar = () => {
                 {/* Action Buttons */}
                 <div className="flex items-center space-x-2 sm:space-x-4">
                     <div className="hidden lg:block">
-                        <LanguageSwitcher />
+                        <LanguageSwitcher isScrolled={isScrolled} />
                     </div>
                     <button className={cn(
                         "p-2 rounded-full transition-colors",
