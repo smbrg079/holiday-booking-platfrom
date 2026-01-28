@@ -2,20 +2,38 @@ import { NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
+import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
+import { schemas, validateRequest } from '@/lib/validation'
+import { requireAuth } from '@/lib/auth-guards'
 
 
 export async function POST(req: Request) {
+    const rateLimitResponse = await rateLimitMiddleware.booking(req as any)
+    if (rateLimitResponse) {
+      return rateLimitResponse
+    }
+    
+    const authResponse = await requireAuth(req as any)
+    if (authResponse) {
+      return authResponse
+    }
+
     try {
         const session = await getServerSession(authOptions)
         const body = await req.json()
-        const { activityId, slotId, participants } = body
+        
+        // Validate input
+        const validation = validateRequest(schemas.booking.create, body)
+        if (!validation.success) {
+            return NextResponse.json(
+                { error: validation.error },
+                { status: 400 }
+            )
+        }
+        const { activityId, slotId, participants } = validation.data!
 
         // Use session userId if available, otherwise fallback to seed anonymous user
         const finalUserId = session?.user?.id || 'anonymous'
-
-        if (!activityId || !slotId || !participants) {
-            return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
-        }
 
         // 1. Fetch activity and slot
         const [activity, slot] = await Promise.all([
@@ -41,8 +59,8 @@ export async function POST(req: Request) {
                 userId: finalUserId,
                 activityId,
                 slotId,
-                participants: parseInt(participants),
-                totalPrice: activity.price * parseInt(participants),
+                participants,
+                totalPrice: activity.price * participants,
                 bookingReference,
                 status: 'PENDING',
             }
@@ -51,7 +69,7 @@ export async function POST(req: Request) {
         // 5. Update slot booked count
         await prisma.availabilitySlot.update({
             where: { id: slotId },
-            data: { booked: { increment: parseInt(participants) } }
+            data: { booked: { increment: participants } }
         })
 
         // 6. In a real app, we would create a Stripe Payment Intent here

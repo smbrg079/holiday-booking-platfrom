@@ -1,20 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
-import { z } from 'zod'
-
-const registerSchema = z.object({
-    name: z.string().min(2, 'Name must be at least 2 characters'),
-    email: z.string().email('Invalid email address'),
-    password: z.string().min(8, 'Password must be at least 8 characters'),
-})
+import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
+import { schemas, validateRequest } from '@/lib/validation'
 
 export async function POST(request: NextRequest) {
+    const rateLimitResponse = await rateLimitMiddleware.auth(request)
+    if (rateLimitResponse) {
+      return rateLimitResponse
+    }
+
     try {
         const body = await request.json()
 
         // Validate input
-        const validatedData = registerSchema.parse(body)
+        const validation = validateRequest(schemas.auth.register, body)
+        if (!validation.success) {
+            return NextResponse.json(
+                { error: validation.error },
+                { status: 400 }
+            )
+        }
+        const validatedData = validation.data!
 
         // Check if user already exists
         const existingUser = await prisma.user.findUnique({
@@ -54,13 +61,6 @@ export async function POST(request: NextRequest) {
             { status: 201 }
         )
     } catch (error) {
-        if (error instanceof z.ZodError) {
-            return NextResponse.json(
-                { error: error.issues[0].message },
-                { status: 400 }
-            )
-        }
-
         console.error('Registration error:', error)
         return NextResponse.json(
             { error: 'An error occurred during registration' },

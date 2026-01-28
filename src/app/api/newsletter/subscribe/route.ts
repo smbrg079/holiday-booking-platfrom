@@ -1,21 +1,23 @@
 import { NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
-import { z } from 'zod'
-
-const emailSchema = z.object({
-    email: z.string().email(),
-})
+import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
+import { schemas, validateRequest } from '@/lib/validation'
 
 export async function POST(req: Request) {
+    const rateLimitResponse = await rateLimitMiddleware.newsletter(req as any)
+    if (rateLimitResponse) {
+      return rateLimitResponse
+    }
+
     try {
         const body = await req.json()
-        const result = emailSchema.safeParse(body)
-
-        if (!result.success) {
-            return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
+        
+        const validation = validateRequest(schemas.newsletter.subscribe, body)
+        if (!validation.success) {
+            return NextResponse.json({ error: validation.error }, { status: 400 })
         }
-
-        const { email } = result.data
+        
+        const { email } = validation.data!
 
         const existingSubscriber = await (prisma as any).subscriber.findUnique({ // eslint-disable-line @typescript-eslint/no-explicit-any
             where: { email },
