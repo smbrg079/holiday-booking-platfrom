@@ -1,4 +1,5 @@
 import React from 'react'
+import { Activity, Category, Destination } from '@prisma/client'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import prisma from '@/lib/prisma'
@@ -86,7 +87,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                             <div className="mb-10">
                                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-indigo-600 mb-6">{t('categories')}</h3>
                                 <div className="space-y-3">
-                                    {categories.map((cat: any) => (
+                                    {categories.map((cat: Category) => (
                                         <Link
                                             key={cat.id}
                                             href={`/activities?category=${cat.name}${destination ? `&destination=${destination}` : ''}${q ? `&q=${q}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}`}
@@ -101,7 +102,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                             <div className="mb-10">
                                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-indigo-600 mb-6">{t('destinations')}</h3>
                                 <div className="space-y-3">
-                                    {destinations.map((dest: any) => (
+                                    {destinations.map((dest: Destination) => (
                                         <Link
                                             key={dest.id}
                                             href={`/activities?destination=${dest.name}${category ? `&category=${category}` : ''}${q ? `&q=${q}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}`}
@@ -120,7 +121,7 @@ const ActivitiesPage = async ({ searchParams }: PageProps) => {
                     {/* Activities Grid */}
                     <div className="flex-1">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {activities.map((activity: any) => {
+                            {activities.map((activity: Activity & { destination: Destination; category: Category; reviews: { rating: number }[] }) => {
                                 const images = JSON.parse(activity.images || '[]')
                                 const rating = activity.reviews.length > 0
                                     ? (activity.reviews.reduce((acc: number, r: { rating: number }) => acc + r.rating, 0) / activity.reviews.length).toFixed(1)

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
@@ -7,21 +7,21 @@ import { schemas, validateRequest } from '@/lib/validation'
 import { requireAuth } from '@/lib/auth-guards'
 
 
-export async function POST(req: Request) {
-    const rateLimitResponse = await rateLimitMiddleware.booking(req as any)
+export async function POST(req: NextRequest) {
+    const rateLimitResponse = await rateLimitMiddleware.booking(req)
     if (rateLimitResponse) {
-      return rateLimitResponse
+        return rateLimitResponse
     }
-    
-    const authResponse = await requireAuth(req as any)
+
+    const authResponse = await requireAuth(req)
     if (authResponse) {
-      return authResponse
+        return authResponse
     }
 
     try {
         const session = await getServerSession(authOptions)
         const body = await req.json()
-        
+
         // Validate input
         const validation = validateRequest(schemas.booking.create, body)
         if (!validation.success) {

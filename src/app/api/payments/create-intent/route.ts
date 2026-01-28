@@ -1,29 +1,29 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import prisma from '@/lib/prisma'
 import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
 import { schemas, validateRequest } from '@/lib/validation'
 import { requireAuth } from '@/lib/auth-guards'
 
-export async function POST(req: Request) {
-    const rateLimitResponse = await rateLimitMiddleware.booking(req as any)
+export async function POST(req: NextRequest) {
+    const rateLimitResponse = await rateLimitMiddleware.booking(req)
     if (rateLimitResponse) {
-      return rateLimitResponse
+        return rateLimitResponse
     }
-    
-    const authResponse = await requireAuth(req as any)
+
+    const authResponse = await requireAuth(req)
     if (authResponse) {
-      return authResponse
+        return authResponse
     }
 
     try {
         const body = await req.json()
-        
+
         const validation = validateRequest(schemas.payment.createIntent, body)
         if (!validation.success) {
             return NextResponse.json({ error: validation.error }, { status: 400 })
         }
-        
+
         const { bookingId } = validation.data!
 
         const booking = await prisma.booking.findUnique({

@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 const HERO_IMAGE = "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2676&auto=format&fit=crop"; // Beautiful Taj Mahal or similar high-end vibe, let's use a Moroccan one
 const MOROCCAN_HERO = "/images/ai-planner-hero.png";
 
+
+
 export default function TripPlannerPage() {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -162,7 +164,7 @@ export default function TripPlannerPage() {
                                         <div className="w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
                                             <Sun size={20} />
                                         </div>
-                                        <h2 className="text-2xl font-black text-slate-900">Your heart's desires</h2>
+                                        <h2 className="text-2xl font-black text-slate-900">Your heart&apos;s desires</h2>
                                     </div>
                                     <div className="flex flex-wrap gap-4">
                                         {interestsOptions.map(interest => (

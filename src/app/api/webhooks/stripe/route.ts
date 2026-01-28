@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { stripe } from '@/lib/stripe'
 import prisma from '@/lib/prisma'
@@ -7,10 +7,10 @@ import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
-export async function POST(req: Request) {
-    const rateLimitResponse = await rateLimitMiddleware.webhook(req as any)
+export async function POST(req: NextRequest) {
+    const rateLimitResponse = await rateLimitMiddleware.webhook(req)
     if (rateLimitResponse) {
-      return rateLimitResponse
+        return rateLimitResponse
     }
 
     const body = await req.text()

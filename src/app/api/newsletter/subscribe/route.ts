@@ -1,22 +1,22 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { rateLimitMiddleware } from '@/lib/rate-limit-middleware'
 import { schemas, validateRequest } from '@/lib/validation'
 
-export async function POST(req: Request) {
-    const rateLimitResponse = await rateLimitMiddleware.newsletter(req as any)
+export async function POST(req: NextRequest) {
+    const rateLimitResponse = await rateLimitMiddleware.newsletter(req)
     if (rateLimitResponse) {
-      return rateLimitResponse
+        return rateLimitResponse
     }
 
     try {
         const body = await req.json()
-        
+
         const validation = validateRequest(schemas.newsletter.subscribe, body)
         if (!validation.success) {
             return NextResponse.json({ error: validation.error }, { status: 400 })
         }
-        
+
         const { email } = validation.data!
 
         const existingSubscriber = await (prisma as any).subscriber.findUnique({ // eslint-disable-line @typescript-eslint/no-explicit-any

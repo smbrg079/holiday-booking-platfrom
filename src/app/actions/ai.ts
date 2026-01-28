@@ -5,7 +5,7 @@
 import { chatWithAyoub, generateItinerary } from "@/lib/gemini";
 import { ItineraryRequest } from "@/types/ai";
 
-export async function askAyoub(message: string, history: any[]) {
+export async function askAyoub(message: string, history: { role: string, parts: { text: string }[] }[]) {
     return await chatWithAyoub(message, history);
 }
 

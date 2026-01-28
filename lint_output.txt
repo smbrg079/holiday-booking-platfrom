@@ -1,0 +1,103 @@
+
+> holiday-booking-platform@0.1.0 lint
+> eslint
+
+
+/home/axios/holiday-booking-platform/src/app/[locale]/activities/[id]/page.tsx
+   7:47  warning  'Users' is defined but never used             @typescript-eslint/no-unused-vars
+  11:10  warning  'getServerSession' is defined but never used  @typescript-eslint/no-unused-vars
+  12:10  warning  'authOptions' is defined but never used       @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/activities/page.tsx
+   89:59  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  123:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/app/[locale]/admin/bookings/page.tsx
+  5:26  warning  'Tag' is defined but never used     @typescript-eslint/no-unused-vars
+  5:31  warning  'MapPin' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/admin/dashboard/page.tsx
+  10:5  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  11:5  warning  'Clock' is defined but never used         @typescript-eslint/no-unused-vars
+  12:5  warning  'XCircle' is defined but never used       @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/admin/destinations/new/page.tsx
+  12:5  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any')
+
+/home/axios/holiday-booking-platform/src/app/[locale]/admin/destinations/page.tsx
+  44:42  warning  Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element')
+  46:67  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/home/axios/holiday-booking-platform/src/app/[locale]/checkout/[id]/page.tsx
+  4:10  warning  'CreditCard' is defined but never used   @typescript-eslint/no-unused-vars
+  4:22  warning  'ShieldCheck' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/dashboard/page.tsx
+  16:11  warning  'ct' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/destinations/[slug]/page.tsx
+  159:42  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/login/page.tsx
+  42:18  warning  'err' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/[locale]/planner/page.tsx
+    5:71   warning  'MapPin' is defined but never used                               @typescript-eslint/no-unused-vars
+   10:7    warning  'HERO_IMAGE' is assigned a value but never used                  @typescript-eslint/no-unused-vars
+  165:102  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/home/axios/holiday-booking-platform/src/app/actions/admin.ts
+   70:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+   93:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+  141:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/app/actions/ai.ts
+  8:58  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/app/api/bookings/route.ts
+  11:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:51  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/app/api/newsletter/subscribe/route.ts
+  7:75  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/app/api/payments/create-intent/route.ts
+   9:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  14:51  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/app/api/webhooks/stripe/route.ts
+  11:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/components/activities/BookingSidebar.tsx
+  56:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/components/admin/BookingStatusToggle.tsx
+  6:10  warning  'useRouter' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/components/ai/AIAssistant.tsx
+  4:43  warning  'User' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/components/checkout/PayPalButton.tsx
+   6:10  warning  'Loader2' is defined but never used  @typescript-eslint/no-unused-vars
+  14:40  warning  'amount' is defined but never used   @typescript-eslint/no-unused-vars
+  14:59  warning  'locale' is defined but never used   @typescript-eslint/no-unused-vars
+  51:45  warning  'actions' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/components/home/PromotedDestinations.tsx
+   6:29  warning  'useTransform' is defined but never used              @typescript-eslint/no-unused-vars
+   7:22  warning  'Sun' is defined but never used                       @typescript-eslint/no-unused-vars
+  13:13  warning  'scrollYProgress' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/components/home/WhyChoose.tsx
+  8:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/axios/holiday-booking-platform/src/lib/auth-guards.ts
+  5:35  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/axios/holiday-booking-platform/src/types/next-auth.d.ts
+  1:8  warning  'NextAuth' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 45 problems (12 errors, 33 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.
+

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Sparkles, Globe, ShieldCheck, Compass } from 'lucide-react'
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, React.ElementType> = {
     Globe,
     ShieldCheck,
     Compass,
