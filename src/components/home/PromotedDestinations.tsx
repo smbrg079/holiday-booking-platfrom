@@ -3,14 +3,14 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Sun, History, Compass, Palmtree } from 'lucide-react'
+import { motion, useScroll } from 'framer-motion'
+import { ArrowRight, History, Compass, Palmtree } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 const PromotedDestinations = () => {
     const t = useTranslations('Promoted')
     const containerRef = useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({
+    useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     })

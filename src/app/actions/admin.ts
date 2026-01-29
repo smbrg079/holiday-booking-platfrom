@@ -67,7 +67,7 @@ export async function deleteDestination(id: string) {
         await prisma.destination.delete({ where: { id } });
         revalidatePath('/admin/destinations');
         return { success: true };
-    } catch (error) {
+    } catch {
         return { error: 'Failed to delete destination' };
     }
 }
@@ -90,7 +90,7 @@ export async function updateBookingStatus(id: string, status: string) {
         revalidatePath('/admin/dashboard');
         revalidatePath('/admin/bookings');
         return { success: true };
-    } catch (error) {
+    } catch {
         return { error: 'Failed to update booking' };
     }
 }
@@ -138,7 +138,7 @@ export async function deleteActivity(id: string) {
         revalidatePath('/admin/activities');
         revalidatePath('/activities');
         return { success: true };
-    } catch (error) {
+    } catch {
         return { error: 'Failed to delete activity' };
     }
 }

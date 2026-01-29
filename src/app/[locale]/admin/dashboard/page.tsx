@@ -6,10 +6,7 @@ import {
     TrendingUp,
     DollarSign,
     Calendar,
-    MoreVertical,
-    CheckCircle2,
-    Clock,
-    XCircle
+    MoreVertical
 } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import { getServerSession } from "next-auth/next"

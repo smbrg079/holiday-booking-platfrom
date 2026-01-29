@@ -9,7 +9,6 @@ import Link from 'next/link'
 export default function NewDestinationPage() {
     const router = useRouter()
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async function handleSubmit(formData: FormData) {
         const result = await createDestination(formData)
         if (result?.error) {

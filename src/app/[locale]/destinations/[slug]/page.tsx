@@ -156,7 +156,7 @@ const DestinationDetailPage = async ({ params }: PageProps) => {
                                 let images = []
                                 try {
                                     images = JSON.parse(activity.images || '[]')
-                                } catch (e) {
+                                } catch {
                                     images = []
                                 }
                                 const mainImage = images[0] || destination.image || 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957'

@@ -13,7 +13,6 @@ import { getTranslations } from 'next-intl/server'
 const UserDashboard = async () => {
     const session = await getServerSession(authOptions)
     const t = await getTranslations('Dashboard')
-    const ct = await getTranslations('Common')
     const dt = await getTranslations('Database')
 
     if (!session || !session.user) {

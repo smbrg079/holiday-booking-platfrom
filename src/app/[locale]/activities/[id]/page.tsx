@@ -4,12 +4,10 @@ import { Link } from '@/i18n/routing'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import prisma from '@/lib/prisma'
-import { Clock, MapPin, Check, X, Star, Info, Users } from 'lucide-react'
+import { Clock, MapPin, Check, X, Star, Info } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import BookingSidebar from '@/components/activities/BookingSidebar'
 import ReviewForm from '@/components/activities/ReviewForm'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth"
 import { getTranslations } from 'next-intl/server'
 
 interface PageProps {

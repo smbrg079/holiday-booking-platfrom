@@ -3,7 +3,7 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useRouter } from "@/i18n/routing";
 import { useState } from "react";
-import { Loader2, AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 interface PayPalButtonProps {
     amount: number;
@@ -11,7 +11,7 @@ interface PayPalButtonProps {
     locale: string;
 }
 
-export default function PayPalButton({ amount, bookingId, locale }: PayPalButtonProps) {
+export default function PayPalButton({ bookingId }: PayPalButtonProps) {
     const router = useRouter();
     const [error, setError] = useState<string | null>(null);
 
@@ -48,7 +48,7 @@ export default function PayPalButton({ amount, bookingId, locale }: PayPalButton
                             .then(res => res.json())
                             .then(data => data.id);
                     }}
-                    onApprove={async (data, actions) => {
+                    onApprove={async (data) => {
                         // Capture the funds on your server
                         return fetch(`/api/payments/paypal/capture-order`, {
                             method: "POST",

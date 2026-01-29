@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2, User, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Sparkles } from 'lucide-react';
 import { askAyoub } from '@/app/actions/ai';
 import { ChatMessage } from '@/types/ai';
 import { motion, AnimatePresence } from 'framer-motion';

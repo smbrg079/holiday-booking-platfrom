@@ -1,7 +1,7 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import prisma from '@/lib/prisma'
-import { CreditCard, ShieldCheck, Lock, MapPin } from 'lucide-react'
+import { Lock, MapPin } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import Image from 'next/image'
 import PaymentWrapper from '@/components/checkout/PaymentWrapper'

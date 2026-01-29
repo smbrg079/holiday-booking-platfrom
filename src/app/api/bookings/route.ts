@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
         return rateLimitResponse
     }
 
-    const authResponse = await requireAuth(req)
+    const authResponse = await requireAuth()
     if (authResponse) {
         return authResponse
     }

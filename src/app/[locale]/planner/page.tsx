@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Loader2, Sparkles, Calendar, Users, Wallet, Sun, ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
+import { Loader2, Sparkles, Calendar, Users, Wallet, Sun, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { getPlan } from '@/app/actions/ai';
 import { GeneratedItinerary, ItineraryRequest } from '@/types/ai';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2676&auto=format&fit=crop"; // Beautiful Taj Mahal or similar high-end vibe, let's use a Moroccan one
 const MOROCCAN_HERO = "/images/ai-planner-hero.png";
 
 

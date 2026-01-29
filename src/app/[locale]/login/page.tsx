@@ -39,7 +39,7 @@ const LoginPage = () => {
                 router.push(callbackUrl)
                 router.refresh()
             }
-        } catch (err) {
+        } catch {
             setError(t('somethingWrong'))
         } finally {
             setLoading(false)

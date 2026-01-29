@@ -2,7 +2,7 @@ import React from 'react'
 import prisma from '@/lib/prisma'
 import { formatPrice } from '@/lib/utils'
 import BookingStatusToggle from '@/components/admin/BookingStatusToggle'
-import { Calendar, User, Tag, MapPin } from 'lucide-react'
+import { Calendar, User } from 'lucide-react'
 
 export default async function AdminBookingsPage() {
     const bookings = await prisma.booking.findMany({

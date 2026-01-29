@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import prisma from '@/lib/prisma'
 import { Link } from '@/i18n/routing'
 import { Plus, Trash2, Edit } from 'lucide-react'
@@ -41,9 +42,8 @@ export default async function AdminDestinationsPage() {
                             <tr key={destination.id} className="hover:bg-slate-50 transition-colors">
                                 <td className="px-8 py-6 font-bold text-slate-900">
                                     <div className="flex items-center space-x-4">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <div className="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden relative">
-                                            {destination.image && <img src={destination.image} alt={destination.name} className="object-cover w-full h-full" />}
+                                            {destination.image && <Image src={destination.image} alt={destination.name} fill className="object-cover" />}
                                         </div>
                                         <span>{destination.name}</span>
                                     </div>

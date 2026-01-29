@@ -5,15 +5,13 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  serverExternalPackages: ['@upstash/ratelimit'],
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'www.svgrepo.com' },
       { protocol: 'https', hostname: 'upload.wikimedia.org' },
     ],
-  },
-  experimental: {
-    serverComponentsExternalPackages: ['@upstash/ratelimit'],
   },
   headers: async () => {
     return [

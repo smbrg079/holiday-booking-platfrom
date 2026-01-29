@@ -53,7 +53,7 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
             } else if (data.error) {
                 alert(data.error)
             }
-        } catch (error) {
+        } catch {
             alert(t('failed'))
         } finally {
             setIsSubmitting(false)
