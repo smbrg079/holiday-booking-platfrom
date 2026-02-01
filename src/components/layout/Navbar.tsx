@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from '@/i18n/routing'
 import { Menu, X, User, Search, LogOut, LayoutDashboard, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -14,6 +14,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [isAccountOpen, setIsAccountOpen] = useState(false)
+    const accountRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,6 +23,24 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    useEffect(() => {
+        if (!isAccountOpen) return
+        const handleClickOutside = (e: MouseEvent) => {
+            if (accountRef.current && !accountRef.current.contains(e.target as Node)) {
+                setIsAccountOpen(false)
+            }
+        }
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsAccountOpen(false)
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener('keydown', handleEscape)
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+            document.removeEventListener('keydown', handleEscape)
+        }
+    }, [isAccountOpen])
 
     const navLinks = [
         { name: t('destinations'), href: '/destinations' },
@@ -75,18 +94,27 @@ const Navbar = () => {
                     <div className="hidden lg:block">
                         <LanguageSwitcher isScrolled={isScrolled} />
                     </div>
-                    <button className={cn(
-                        "p-2 rounded-full transition-colors",
-                        isScrolled ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/10"
-                    )}>
+                    <Link
+                        href="/activities"
+                        aria-label={t('activities')}
+                        className={cn(
+                            "p-2 rounded-full transition-colors",
+                            isScrolled ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/10"
+                        )}
+                    >
                         <Search size={20} />
-                    </button>
+                    </Link>
 
-                    <div className="relative">
+                    <div className="relative" ref={accountRef}>
                         {status === 'authenticated' ? (
                             <div className="relative">
                                 <button
+                                    type="button"
                                     onClick={() => setIsAccountOpen(!isAccountOpen)}
+                                    aria-expanded={isAccountOpen}
+                                    aria-haspopup="menu"
+                                    aria-controls="account-menu"
+                                    id="account-menu-button"
                                     className={cn(
                                         "flex items-center space-x-2 p-1 pl-3 rounded-full transition-all border",
                                         isScrolled
@@ -103,7 +131,7 @@ const Navbar = () => {
                                 </button>
 
                                 {isAccountOpen && (
-                                    <div className="absolute top-full right-0 mt-3 w-64 bg-white rounded-3xl shadow-2xl border border-slate-100 py-3 animate-in fade-in zoom-in duration-200 origin-top-right">
+                                    <div id="account-menu" role="menu" aria-labelledby="account-menu-button" className="absolute top-full right-0 mt-3 w-64 bg-white rounded-3xl shadow-2xl border border-slate-100 py-3 animate-in fade-in zoom-in duration-200 origin-top-right">
                                         <div className="px-6 py-4 border-b border-slate-50">
                                             <p className="text-sm font-black text-slate-900">{session.user?.name}</p>
                                             <p className="text-xs text-slate-400 font-medium truncate">{session.user?.email}</p>
@@ -152,8 +180,12 @@ const Navbar = () => {
                     </div>
 
                     <button
+                        type="button"
                         className="md:hidden p-2 text-slate-900"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-expanded={isMobileMenuOpen}
+                        aria-controls="mobile-menu"
+                        aria-label={isMobileMenuOpen ? t('closeMenu') : t('openMenu')}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} className={isScrolled ? "text-slate-900" : "text-white"} />}
                     </button>
@@ -162,7 +194,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-xl overflow-hidden animate-in slide-in-from-top duration-300">
+                <div id="mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-xl overflow-hidden animate-in slide-in-from-top duration-300">
                     <div className="flex flex-col p-6 space-y-4">
                         <div className="flex justify-between items-center mb-4 lg:hidden">
                             <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{t('selectLanguage')}</span>

@@ -1,4 +1,10 @@
 {
+    "Error": {
+        "title": "Etwas ist schiefgelaufen",
+        "description": "Ein unerwarteter Fehler ist aufgetreten. Unser Team wurde benachrichtigt.",
+        "tryAgain": "Erneut versuchen",
+        "backToHome": "Zurück zur Startseite"
+    },
     "Navbar": {
         "destinations": "Ziele",
         "activities": "Aktivitäten",
@@ -10,7 +16,9 @@
         "signOut": "Abmelden",
         "myBookings": "Meine Buchungen",
         "adminConsole": "Admin-Konsole",
-        "selectLanguage": "Sprache wählen"
+        "selectLanguage": "Sprache wählen",
+        "openMenu": "Menü öffnen",
+        "closeMenu": "Menü schließen"
     },
     "Hero": {
         "badge": "Einzigartige Erlebnisse entdecken",
@@ -48,7 +56,8 @@
         "newsletterSubscribing": "Abonnieren...",
         "newsletterNoSpam": "Kein Spam. Versprochen. Jederzeit abbestellbar.",
         "newsletterSuccessTitle": "Sie sind dabei!",
-        "newsletterSuccessSubtitle": "Vielen Dank für Ihr Abonnement. Freuen Sie sich auf exklusive Reiseangebote und Inspirationen in Ihrem Posteingang."
+        "newsletterSuccessSubtitle": "Vielen Dank für Ihr Abonnement. Freuen Sie sich auf exklusive Reiseangebote und Inspirationen in Ihrem Posteingang.",
+        "newsletterError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
     },
     "ActivityDetails": {
         "home": "Startseite",
@@ -73,6 +82,13 @@
         "yourExperience": "Ihre Erfahrung",
         "placeholderReview": "Was hat Ihnen an dieser Aktivität besonders gefallen?",
         "howWasExperience": "Wie war Ihre Erfahrung? Ihr Feedback hilft anderen Reisenden."
+    },
+    "Checkout": {
+        "paymentDetails": "Zahlungsdetails",
+        "processing": "Wird verarbeitet...",
+        "pay": "Bezahlen",
+        "securedByStripe": "Gesichert durch Stripe",
+        "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
     },
     "Booking": {
         "pricePerPerson": "Preis pro Person",
@@ -112,6 +128,9 @@
         "password": "Passwort",
         "rememberMe": "Angemeldet bleiben",
         "forgotPassword": "Passwort vergessen?",
+        "forgotPasswordTitle": "Passwort zurücksetzen",
+        "forgotPasswordDesc": "Die Passwortzurücksetzung ist noch nicht verfügbar. Bitte kontaktieren Sie den Support oder versuchen Sie sich erneut anzumelden.",
+        "backToLogin": "Zurück zur Anmeldung",
         "signIn": "Anmelden",
         "signingIn": "Anmeldung...",
         "noAccount": "Noch kein Konto?",

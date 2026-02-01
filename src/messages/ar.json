@@ -1,4 +1,10 @@
 {
+    "Error": {
+        "title": "حدث خطأ ما",
+        "description": "واجهنا خطأ غير متوقع. تم إخطار فريقنا.",
+        "tryAgain": "حاول مرة أخرى",
+        "backToHome": "العودة للرئيسية"
+    },
     "Navbar": {
         "destinations": "الوجهات",
         "activities": "الأنشطة",
@@ -10,7 +16,9 @@
         "signOut": "تسجيل الخروج",
         "myBookings": "حجوزاتي",
         "adminConsole": "لوحة الإدارة",
-        "selectLanguage": "اختر اللغة"
+        "selectLanguage": "اختر اللغة",
+        "openMenu": "فتح القائمة",
+        "closeMenu": "إغلاق القائمة"
     },
     "Hero": {
         "badge": "اكتشف تجارب فريدة",
@@ -49,7 +57,8 @@
         "newsletterSubscribing": "جاري الاشتراك...",
         "newsletterNoSpam": "لا رسائل مزعجة. أبداً. يمكنك إلغاء الاشتراك في أي وقت.",
         "newsletterSuccessTitle": "لقد انضممت إلى القائمة!",
-        "newsletterSuccessSubtitle": "شكراً لاشتراكك. استعد للحصول على عروض سفر حصرية وإلهام في بريدك الوارد."
+        "newsletterSuccessSubtitle": "شكراً لاشتراكك. استعد للحصول على عروض سفر حصرية وإلهام في بريدك الوارد.",
+        "newsletterError": "حدث خطأ ما. يرجى المحاولة لاحقاً."
     },
     "ActivityDetails": {
         "home": "الرئيسية",
@@ -74,6 +83,13 @@
         "yourExperience": "تجربتك",
         "placeholderReview": "ما الذي أعجبك في هذا النشاط؟",
         "howWasExperience": "كيف كانت تجربتك؟ ملاحظاتك تساعد المسافرين الآخرين."
+    },
+    "Checkout": {
+        "paymentDetails": "تفاصيل الدفع",
+        "processing": "جاري المعالجة...",
+        "pay": "ادفع",
+        "securedByStripe": "مؤمّن بواسطة Stripe",
+        "unexpectedError": "حدث خطأ غير متوقع."
     },
     "Booking": {
         "pricePerPerson": "السعر للشخص الواحد",
@@ -113,6 +129,9 @@
         "password": "كلمة المرور",
         "rememberMe": "تذكرني",
         "forgotPassword": "هل نسيت كلمة المرور؟",
+        "forgotPasswordTitle": "إعادة تعيين كلمة المرور",
+        "forgotPasswordDesc": "إعادة تعيين كلمة المرور غير متاحة بعد. يرجى الاتصال بالدعم أو المحاولة لتسجيل الدخول مرة أخرى.",
+        "backToLogin": "العودة لتسجيل الدخول",
         "signIn": "تسجيل الدخول",
         "signingIn": "جاري تسجيل الدخول...",
         "noAccount": "ليس لديك حساب؟",

@@ -1,4 +1,10 @@
 {
+    "Error": {
+        "title": "Une erreur s'est produite",
+        "description": "Nous avons rencontré une erreur inattendue. Notre équipe a été notifiée.",
+        "tryAgain": "Réessayer",
+        "backToHome": "Retour à l'accueil"
+    },
     "Navbar": {
         "destinations": "Destinations",
         "activities": "Activités",
@@ -10,7 +16,9 @@
         "signOut": "Se déconnecter",
         "myBookings": "Mes réservations",
         "adminConsole": "Console Admin",
-        "selectLanguage": "Choisir la langue"
+        "selectLanguage": "Choisir la langue",
+        "openMenu": "Ouvrir le menu",
+        "closeMenu": "Fermer le menu"
     },
     "Hero": {
         "badge": "Découvrez des Expériences Uniques",
@@ -49,7 +57,8 @@
         "newsletterSubscribing": "Inscription...",
         "newsletterNoSpam": "Pas de spam. Jamais. Désabonnez-vous à tout moment.",
         "newsletterSuccessTitle": "Vous êtes sur la liste !",
-        "newsletterSuccessSubtitle": "Merci de vous être abonné. Préparez-vous à recevoir des offres de voyage exclusives et de l'inspiration dans votre boîte de réception."
+        "newsletterSuccessSubtitle": "Merci de vous être abonné. Préparez-vous à recevoir des offres de voyage exclusives et de l'inspiration dans votre boîte de réception.",
+        "newsletterError": "Une erreur s'est produite. Veuillez réessayer plus tard."
     },
     "ActivityDetails": {
         "home": "Accueil",
@@ -74,6 +83,13 @@
         "yourExperience": "Votre expérience",
         "placeholderReview": "Qu'avez-vous aimé dans cette activité ?",
         "howWasExperience": "Comment s'est passée votre expérience ? Vos commentaires aident les autres voyageurs."
+    },
+    "Checkout": {
+        "paymentDetails": "Détails du paiement",
+        "processing": "Traitement...",
+        "pay": "Payer",
+        "securedByStripe": "Sécurisé par Stripe",
+        "unexpectedError": "Une erreur inattendue s'est produite."
     },
     "Booking": {
         "pricePerPerson": "Prix par personne",
@@ -113,6 +129,9 @@
         "password": "Mot de passe",
         "rememberMe": "Se souvenir de moi",
         "forgotPassword": "Mot de passe oublié ?",
+        "forgotPasswordTitle": "Réinitialiser votre mot de passe",
+        "forgotPasswordDesc": "La réinitialisation du mot de passe n'est pas encore disponible. Contactez le support ou réessayez de vous connecter.",
+        "backToLogin": "Retour à la connexion",
         "signIn": "Se connecter",
         "signingIn": "Connexion...",
         "noAccount": "Vous n'avez pas de compte ?",

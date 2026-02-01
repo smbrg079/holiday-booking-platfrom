@@ -1,4 +1,10 @@
 {
+    "Error": {
+        "title": "Coś poszło nie tak",
+        "description": "Wystąpił nieoczekiwany błąd. Nasz zespół został powiadomiony.",
+        "tryAgain": "Spróbuj ponownie",
+        "backToHome": "Powrót do strony głównej"
+    },
     "Navbar": {
         "destinations": "Kierunki",
         "activities": "Atrakcje",
@@ -10,7 +16,9 @@
         "signOut": "Wyloguj się",
         "myBookings": "Moje rezerwacje",
         "adminConsole": "Konsola administratora",
-        "selectLanguage": "Wybierz język"
+        "selectLanguage": "Wybierz język",
+        "openMenu": "Otwórz menu",
+        "closeMenu": "Zamknij menu"
     },
     "Hero": {
         "badge": "Odkryj Wyjątkowe Doświadczenia",
@@ -48,7 +56,8 @@
         "newsletterSubscribing": "Subskrybowanie...",
         "newsletterNoSpam": "Zero spamu. Nigdy. Możesz zrezygnować w każdej chwili.",
         "newsletterSuccessTitle": "Jesteś na liście!",
-        "newsletterSuccessSubtitle": "Dziękujemy za subskrypcję. Przygotuj się na wyjątkowe oferty i inspiracje w swojej skrzynce odbiorczej."
+        "newsletterSuccessSubtitle": "Dziękujemy za subskrypcję. Przygotuj się na wyjątkowe oferty i inspiracje w swojej skrzynce odbiorczej.",
+        "newsletterError": "Coś poszło nie tak. Spróbuj ponownie później."
     },
     "ActivityDetails": {
         "home": "Strona główna",
@@ -73,6 +82,13 @@
         "yourExperience": "Twoje doświadczenie",
         "placeholderReview": "Co Ci się najbardziej podobało w tej atrakcji?",
         "howWasExperience": "Jak oceniasz swoje doświadczenie? Twoja opinia pomaga innym podróżnikom."
+    },
+    "Checkout": {
+        "paymentDetails": "Szczegóły płatności",
+        "processing": "Przetwarzanie...",
+        "pay": "Zapłać",
+        "securedByStripe": "Zabezpieczone przez Stripe",
+        "unexpectedError": "Wystąpił nieoczekiwany błąd."
     },
     "Booking": {
         "pricePerPerson": "Cena za osobę",
@@ -112,6 +128,9 @@
         "password": "Hasło",
         "rememberMe": "Zapamiętaj mnie",
         "forgotPassword": "Zapomniałeś hasła?",
+        "forgotPasswordTitle": "Zresetuj hasło",
+        "forgotPasswordDesc": "Resetowanie hasła nie jest jeszcze dostępne. Skontaktuj się z pomocą techniczną lub spróbuj zalogować się ponownie.",
+        "backToLogin": "Powrót do logowania",
         "signIn": "Zaloguj się",
         "signingIn": "Logowanie...",
         "noAccount": "Nie masz konta?",

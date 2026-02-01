@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import { AlertTriangle, ArrowLeft, RefreshCcw } from 'lucide-react'
 
@@ -11,6 +12,8 @@ export default function Error({
     error: Error & { digest?: string }
     reset: () => void
 }) {
+    const t = useTranslations('Error')
+
     React.useEffect(() => {
         console.error(error)
     }, [error])
@@ -22,18 +25,19 @@ export default function Error({
                     <AlertTriangle size={40} />
                 </div>
 
-                <h1 className="text-3xl font-black text-slate-900 mb-4">Something went wrong</h1>
+                <h1 className="text-3xl font-black text-slate-900 mb-4">{t('title')}</h1>
                 <p className="text-slate-500 mb-10 leading-relaxed">
-                    We encountered an unexpected error. Don&apos;t worry, our team has been notified.
+                    {t('description')}
                 </p>
 
                 <div className="space-y-4">
                     <button
+                        type="button"
                         onClick={() => reset()}
                         className="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl flex items-center justify-center space-x-2 hover:bg-slate-900 transition-all shadow-xl shadow-indigo-100"
                     >
                         <RefreshCcw size={18} />
-                        <span>Try Again</span>
+                        <span>{t('tryAgain')}</span>
                     </button>
 
                     <Link
@@ -41,7 +45,7 @@ export default function Error({
                         className="w-full py-4 bg-slate-100 text-slate-900 font-bold rounded-2xl flex items-center justify-center space-x-2 hover:bg-slate-200 transition-all"
                     >
                         <ArrowLeft size={18} />
-                        <span>Back to Home</span>
+                        <span>{t('backToHome')}</span>
                     </Link>
                 </div>
             </div>

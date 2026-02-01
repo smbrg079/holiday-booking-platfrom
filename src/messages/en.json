@@ -1,4 +1,10 @@
 {
+    "Error": {
+        "title": "Something went wrong",
+        "description": "We encountered an unexpected error. Don't worry, our team has been notified.",
+        "tryAgain": "Try Again",
+        "backToHome": "Back to Home"
+    },
     "Navbar": {
         "destinations": "Destinations",
         "activities": "Activities",
@@ -10,7 +16,9 @@
         "signOut": "Sign Out",
         "myBookings": "My Bookings",
         "adminConsole": "Admin Console",
-        "selectLanguage": "Select Language"
+        "selectLanguage": "Select Language",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
     },
     "Hero": {
         "badge": "Discover Unique Experiences",
@@ -49,7 +57,8 @@
         "newsletterSubscribing": "Subscribing...",
         "newsletterNoSpam": "No spam. Ever. Unsubscribe anytime.",
         "newsletterSuccessTitle": "You're on the list!",
-        "newsletterSuccessSubtitle": "Thanks for subscribing. Expect exclusive travel deals and inspiration in your inbox."
+        "newsletterSuccessSubtitle": "Thanks for subscribing. Expect exclusive travel deals and inspiration in your inbox.",
+        "newsletterError": "Something went wrong. Please try again later."
     },
     "Activities": {
         "title": "Activities",
@@ -80,6 +89,9 @@
         "password": "Password",
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password?",
+        "forgotPasswordTitle": "Reset your password",
+        "forgotPasswordDesc": "Password reset is not available yet. Please contact support or try signing in again.",
+        "backToLogin": "Back to Sign In",
         "signIn": "Sign In",
         "signingIn": "Signing In...",
         "noAccount": "Don't have an account?",
@@ -213,6 +225,13 @@
         "yourExperience": "Your Experience",
         "placeholderReview": "Tell us about your experience...",
         "postReview": "Post Review"
+    },
+    "Checkout": {
+        "paymentDetails": "Payment Details",
+        "processing": "Processing...",
+        "pay": "Pay",
+        "securedByStripe": "Secured by Stripe",
+        "unexpectedError": "An unexpected error occurred."
     },
     "Booking": {
         "pricePerPerson": "Price per person",

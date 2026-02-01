@@ -13,11 +13,23 @@ export default function Newsletter() {
         e.preventDefault()
         setStatus('loading')
 
-        // Mock API call
-        await new Promise(resolve => setTimeout(resolve, 1500))
+        try {
+            const res = await fetch('/api/newsletter/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            })
+            const data = await res.json()
 
-        setStatus('success')
-        setEmail('')
+            if (res.ok) {
+                setStatus('success')
+                setEmail('')
+            } else {
+                setStatus('error')
+            }
+        } catch {
+            setStatus('error')
+        }
     }
 
     if (status === 'success') {
@@ -45,12 +57,17 @@ export default function Newsletter() {
                 </div>
 
                 <div className="w-full max-w-2xl">
+                    {status === 'error' && (
+                        <p className="mb-4 text-amber-200 text-sm font-medium" role="alert">
+                            {t('newsletterError')}
+                        </p>
+                    )}
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
                         <input
                             type="email"
                             required
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
                             placeholder={t('newsletterPlaceholder')}
                             className="flex-1 px-8 py-5 bg-transparent border border-white/40 rounded-2xl outline-none text-white font-bold placeholder:text-white/40 focus:border-white transition-all text-lg"
                         />

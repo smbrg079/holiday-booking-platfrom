@@ -26,6 +26,7 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
     const [selectedSlot, setSelectedSlot] = useState(slots[0]?.id || '')
     const [participants, setParticipants] = useState(1)
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
     const totalPrice = price * participants
 
@@ -34,6 +35,7 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
         if (!selectedSlot) return
 
         setIsSubmitting(true)
+        setErrorMessage(null)
 
         try {
             const response = await fetch('/api/bookings', {
@@ -51,10 +53,10 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
             if (data.redirectUrl) {
                 router.push(data.redirectUrl)
             } else if (data.error) {
-                alert(data.error)
+                setErrorMessage(typeof data.error === 'string' ? data.error : t('failed'))
             }
         } catch {
-            alert(t('failed'))
+            setErrorMessage(t('failed'))
         } finally {
             setIsSubmitting(false)
         }
@@ -73,13 +75,18 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
             </div>
 
             <form onSubmit={handleBooking} className="space-y-6">
+                {errorMessage && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-2xl text-red-600 text-sm font-medium" role="alert">
+                        {errorMessage}
+                    </div>
+                )}
                 <div>
                     <label className="block text-sm font-bold text-slate-900 mb-2">{t('selectDate')}</label>
                     <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                         <select
                             value={selectedSlot}
-                            onChange={(e) => setSelectedSlot(e.target.value)}
+                            onChange={(e) => { setSelectedSlot(e.target.value); setErrorMessage(null) }}
                             className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 text-slate-900 font-medium appearance-none"
                             required
                         >
@@ -101,7 +108,7 @@ export default function BookingSidebar({ activityId, price, slots }: BookingSide
                             type="number"
                             min="1"
                             value={participants}
-                            onChange={(e) => setParticipants(parseInt(e.target.value) || 1)}
+                            onChange={(e) => { setParticipants(parseInt(e.target.value) || 1); setErrorMessage(null) }}
                             className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 text-slate-900 font-medium"
                             required
                         />

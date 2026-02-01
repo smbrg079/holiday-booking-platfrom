@@ -3,6 +3,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -56,7 +57,7 @@ export async function createDestination(formData: FormData) {
         revalidatePath('/admin/destinations');
         return { success: true };
     } catch (error) {
-        console.error('Create Destination Error:', error);
+        logger.error('Create Destination Error', error);
         return { error: 'Failed to create destination' };
     }
 }
@@ -114,7 +115,7 @@ export async function createActivity(formData: FormData) {
     const validated = ActivitySchema.safeParse(data);
 
     if (!validated.success) {
-        console.error('Validation Error:', validated.error);
+        logger.info('Activity validation failed', { issues: validated.error.issues });
         return { error: 'Invalid activity data' };
     }
 
@@ -126,7 +127,7 @@ export async function createActivity(formData: FormData) {
         revalidatePath('/activities');
         return { success: true };
     } catch (error) {
-        console.error('Create Activity Error:', error);
+        logger.error('Create Activity Error', error);
         return { error: 'Failed to create activity' };
     }
 }
