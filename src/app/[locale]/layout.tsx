@@ -4,6 +4,7 @@ import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SessionProvider from "@/components/providers/SessionProvider";
+import IntlErrorHandlingProvider from "@/components/providers/IntlErrorHandlingProvider";
 import AIAssistant from "@/components/ai/AIAssistant";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -42,12 +43,14 @@ export default async function RootLayout({
     <html lang={locale} dir={dir} className={`${inter.variable} ${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-sans bg-white text-slate-900 antialiased" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <SessionProvider>
-            <Navbar />
-            <main>{children}</main>
-            <AIAssistant />
-            <Footer />
-          </SessionProvider>
+          <IntlErrorHandlingProvider locale={locale}>
+            <SessionProvider>
+              <Navbar />
+              <main className="pt-20 md:pt-24">{children}</main>
+              <AIAssistant />
+              <Footer />
+            </SessionProvider>
+          </IntlErrorHandlingProvider>
         </NextIntlClientProvider>
       </body>
     </html>

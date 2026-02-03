@@ -80,10 +80,29 @@ export const authOptions: NextAuthOptions = {
             name: process.env.NODE_ENV === 'production' ? '__Secure-authjs.session-token' : 'authjs.session-token',
             options: {
                 httpOnly: true,
-                sameSite: 'lax',
+                sameSite: 'strict', // Changed from 'lax' to 'strict' for better CSRF protection
                 path: '/',
                 secure: process.env.NODE_ENV === 'production',
                 domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined,
+                maxAge: 30 * 24 * 60 * 60, // 30 days
+            },
+        },
+        callbackUrl: {
+            name: `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.callback-url`,
+            options: {
+                httpOnly: true,
+                sameSite: 'strict',
+                path: '/',
+                secure: process.env.NODE_ENV === 'production',
+            },
+        },
+        csrfToken: {
+            name: `${process.env.NODE_ENV === 'production' ? '__Host-' : ''}next-auth.csrf-token`,
+            options: {
+                httpOnly: true,
+                sameSite: 'strict',
+                path: '/',
+                secure: process.env.NODE_ENV === 'production',
             },
         },
     },
